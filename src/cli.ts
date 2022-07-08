@@ -35,6 +35,8 @@ export function cli() {
   inquirer.prompt(questions).then((answers) => {
     console.log(JSON.stringify(answers, null, "  "));
 
+    // work out if it can save in the folder the user has prompted
+
     const ScaleValues = generateNamedScales(answers.type_scale).typeScale;
     // these all need to be options that toggle depending on choices
 
