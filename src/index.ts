@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 import inquirer from 'inquirer';
 import kleur from 'kleur';
-import {scaleSteps} from './utils/scales';
+import {TypographyScaleValues} from './utils/scales';
 
 const questions = [
   {
-    type: 'input',
+    type: 'list',
     name: 'type_scale',
     message: "What type scale do you want to use?",
-    choices: Object.keys(scaleSteps),
+    choices: Object.keys(TypographyScaleValues).map(key => `${TypographyScaleValues[key].name} (${TypographyScaleValues[key].value})`),
     filter(val:string) {
-        return val.toLowerCase();
+        return val.split("(")[0].trim().toUpperCase().replace(' ', '_');
       },
   }
 ];
