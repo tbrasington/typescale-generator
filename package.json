@@ -1,11 +1,11 @@
 {
-  "name": "@initate/typescale-cli",
+  "name": "@initate/typescale-generator",
   "version": "0.0.1",
   "type": "module",
   "description": "Generates typescales in step increments or a with a template",
   "main": "./dist/index.js",
   "bin": {
-    "typescale-cli": "./dist/index.js"
+    "typescale-cli": "./dist/cli.js"
   },
   "author": "Thomas Brasington<mail@tbrasington.com>",
   "license": "MIT",
@@ -31,7 +31,8 @@
   },
   "tsup": {
     "entry": [
-      "src/index.ts"
+      "src/index.ts",
+      "src/cli.ts"
     ],
     "splitting": false,
     "sourcemap": true,
