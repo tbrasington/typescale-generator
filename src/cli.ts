@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import inquirer from "inquirer";
 import kleur from "kleur";
-import { generateNamedScales, generateObject, TypographyScaleValues } from "./utils/scales";
+import { generateCSS, generateNamedScales, generateObject, TypographyScaleValues } from "./utils/scales";
 import fs from 'fs-extra'
 const questions = [
   {
@@ -36,10 +36,22 @@ export function cli() {
     console.log(typeSteps);
     
     
-    const file = 'samples/type-scale.ts'
+    const jsFile = 'samples/type-scale.ts'
+ 
+    fs.outputFile(jsFile, `export const typeScale = ${JSON.stringify(typeSteps, null, "  ")}`)
+      .then(() => fs.readFile(jsFile, "utf8"))
+      .then((data) => {
+        console.log(data); // => hello!
+      })
+      .catch((err) => {
+        console.error(err);
+      });
 
-    fs.outputFile(file, `export const typeScale = ${JSON.stringify(typeSteps, null, "  ")}`)
-      .then(() => fs.readFile(file, "utf8"))
+
+    const typeStepsCSS = generateCSS({ scales: ScaleValues })
+    const cssFile = 'samples/type-scale.css'
+    fs.outputFile(cssFile, typeStepsCSS)
+      .then(() => fs.readFile(cssFile, "utf8"))
       .then((data) => {
         console.log(data); // => hello!
       })

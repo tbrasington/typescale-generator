@@ -1,5 +1,3 @@
-
-
 interface ViewPortProps {
   width: number;
   fontSize: number;
@@ -16,9 +14,8 @@ interface GeneratedItemProps {
   clamp: string;
 }
 
-
-interface GenericKeyValueProps { 
-  [key: string]: string 
+interface GenericKeyValueProps {
+  [key: string]: string;
 }
 
 export const NamedScales = {
@@ -36,11 +33,10 @@ export const NamedScales = {
   MAJOR_SEVENTH: "MAJOR_SEVENTH",
 };
 
-
 /*
-* Types for scale enums
-*/
-type NamedScalesProps = (typeof NamedScales)[keyof typeof NamedScales]
+ * Types for scale enums
+ */
+type NamedScalesProps = typeof NamedScales[keyof typeof NamedScales];
 
 export const TypographyScaleValues = {
   [NamedScales.MINOR_SECOND]: { name: "Minor second", value: 1.067 },
@@ -127,20 +123,15 @@ export function buildFluidDesignSystem(opts: {
   };
 }
 
+export function generateCSS({ scales }: { scales: GeneratedItemProps[] }) {
+  const typeSteps: GenericKeyValueProps = {};
 
-
-export function generateCSS(system: { typeScale: any }) {
-  let css = "";
-
-  const { typeScale } = system;
-
-  for (const step of Object.keys(typeScale)) {
-    css += `--step-${step}: ${typeScale[step].clamp};`;
+  for (const step of Object.keys(scales)) {
+    typeSteps[`--step-${step}`] = `${scales[parseInt(step)].clamp};`;
   }
-  return css;
+
+ return `:root ${JSON.stringify(typeSteps, null, "  ").replace(/"/g,"").replace(/,/g,"")}`
 }
-
-
 
 /**
  * @returns An object of CSS clamped values, corresponding to their step.
@@ -157,16 +148,14 @@ export function generateCSS(system: { typeScale: any }) {
     }
  * ```
  */
-export function generateObject({ scales}  : {scales: GeneratedItemProps[]}) {
-
-
-const typeSteps : GenericKeyValueProps = {} 
+export function generateObject({ scales }: { scales: GeneratedItemProps[] }) {
+  const typeSteps: GenericKeyValueProps = {};
 
   for (const step of Object.keys(scales)) {
-    typeSteps[`step-${step}`] = scales[parseInt(step)].clamp
+    typeSteps[`step-${step}`] = scales[parseInt(step)].clamp;
   }
 
-  return typeSteps
+  return typeSteps;
 }
 
 /**
@@ -174,8 +163,7 @@ const typeSteps : GenericKeyValueProps = {}
  * @param scale the scale to use for generation
  * @returns A generated set of scales using the specified scale, along with the min max sizes for a breakpoint
  */
-export function generateNamedScales(scale : NamedScalesProps) {
-
+export function generateNamedScales(scale: NamedScalesProps) {
   const config = {
     minViewport: {
       width: 320,
