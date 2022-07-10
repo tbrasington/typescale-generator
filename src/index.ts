@@ -1,1 +1,1 @@
-export { generateScales } from './utils/scales'
+export { generateNamedScales } from './utils/scales'
