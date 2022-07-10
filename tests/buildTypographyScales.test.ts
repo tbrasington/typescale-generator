@@ -1,7 +1,5 @@
 import {buildTypographyScales } from '../src/utils/scales/buildTypographyScales';
 import {TypographyScaleValues} from '../src/utils/scales'
-import fixture from './fixtures/buildTypographyScale'
-import { json } from 'stream/consumers';
 test('Builds the typographic scale', () => {
 
   const scale = buildTypographyScales({
@@ -17,5 +15,5 @@ test('Builds the typographic scale', () => {
       typeScale : TypographyScaleValues.PERFECT_FOURTH.value,
     },
   })
-  expect(JSON.stringify(scale)).toEqual(fixture)
+  expect(scale).toMatchSnapshot()
 })
