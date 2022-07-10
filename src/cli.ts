@@ -2,13 +2,31 @@
 import inquirer from "inquirer";
 import kleur from "kleur";
 import {
-  generateCSS,
   generateNamedScales,
-  generateObject,
   TypographyScaleValues,
 } from "./utils/scales";
+import { generateCSS } from "./utils/scales/generateCSS";
+import { generateObject } from "./utils/scales/generateObject";
 import fs from "fs-extra";
 
+const Formats = [
+  {
+    name: "CSS variables",
+    value: "css",
+  },
+  {
+    name: "Javascript object",
+    value: "js",
+  },
+  {
+    name: "Typescript object",
+    value: "js",
+  },
+  {
+    name: "Design tokens spec JSON",
+    value: "json",
+  }
+]
 const questions = [
   {
     type: "list", // replace with select https://github.com/SBoudrias/Inquirer.js/tree/master/packages/select
@@ -22,12 +40,26 @@ const questions = [
       return val.split("(")[0].trim().toUpperCase().replace(" ", "_");
     },
   },
-
+  {
+    type : 'checkbox',
+    name :'formats',
+    message : 'What formats do you want to generate?',
+    choices : Formats.map(item=>item.name),
+    filter(val: string[]) {
+      return val.map(item => Formats.find(format=>format.name===item)?.value);
+    },
+    validate (val: string[]) {
+      if (val.length < 1) {
+        return 'You must choose at least one format';
+      }
+      return true;
+    }
+  },
   {
     type: "input",
     name: "file",
     message: "Where should we save the files?",
-    default: "./",
+    default: "./samples",
   },
 ];
 

@@ -10,6 +10,7 @@
   "author": "Thomas Brasington<mail@tbrasington.com>",
   "license": "MIT",
   "dependencies": {
+    "@inquirer/select": "^0.0.21-alpha.0",
     "figlet": "^1.5.2",
     "fs-extra": "^10.1.0",
     "inquirer": "^9.0.0",
