@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Generate clamped sizes for css 1`] = `"clamp(0.88rem, 0.82rem + 0.31vw, 1.1rem)"`;
