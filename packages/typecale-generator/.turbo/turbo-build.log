@@ -1,29 +1,17 @@
-[33m@initate/typescale-generator:build[0m: cache hit, replaying output [2m6a4aac2565138125[0m
-[33m@initate/typescale-generator:build: [0m
-[33m@initate/typescale-generator:build: [0m> @initate/typescale-generator@0.0.1 build
-[33m@initate/typescale-generator:build: [0m> tsup
-[33m@initate/typescale-generator:build: [0m
-[33m@initate/typescale-generator:build: [0mCLI Building entry: src/index.ts, src/cli.ts
-[33m@initate/typescale-generator:build: [0mCLI Using tsconfig: tsconfig.json
-[33m@initate/typescale-generator:build: [0mCLI tsup v6.1.3
-[33m@initate/typescale-generator:build: [0mCLI Using tsup config: /Users/tbrasington/Documents/Code/projects/typescale-cli/packages/typecale-generator/package.json
-[33m@initate/typescale-generator:build: [0mCLI Target: node14
-[33m@initate/typescale-generator:build: [0mCLI Cleaning output folder
-[33m@initate/typescale-generator:build: [0mCJS Build start
-[33m@initate/typescale-generator:build: [0mIIFE Build start
-[33m@initate/typescale-generator:build: [0mESM Build start
-[33m@initate/typescale-generator:build: [0mCJS ⚡️ Build success in 20ms
-[33m@initate/typescale-generator:build: [0mESM ⚡️ Build success in 13ms
-[33m@initate/typescale-generator:build: [0mCJS dist/cli.cjs       7.32 KB
-[33m@initate/typescale-generator:build: [0mCJS dist/index.cjs     4.36 KB
-[33m@initate/typescale-generator:build: [0mCJS dist/cli.cjs.map   14.63 KB
-[33m@initate/typescale-generator:build: [0mCJS dist/index.cjs.map 8.27 KB
-[33m@initate/typescale-generator:build: [0mESM dist/cli.js       5.91 KB
-[33m@initate/typescale-generator:build: [0mESM dist/index.js     3.35 KB
-[33m@initate/typescale-generator:build: [0mESM dist/index.js.map 8.16 KB
-[33m@initate/typescale-generator:build: [0mESM dist/cli.js.map   14.56 KB
-[33m@initate/typescale-generator:build: [0mIIFE ⚡️ Build success in 65ms
-[33m@initate/typescale-generator:build: [0mIIFE dist/index.global.js     3.54 KB
-[33m@initate/typescale-generator:build: [0mIIFE dist/cli.global.js       1.71 MB
-[33m@initate/typescale-generator:build: [0mIIFE dist/index.global.js.map 8.19 KB
-[33m@initate/typescale-generator:build: [0mIIFE dist/cli.global.js.map   1.84 MB
+[32m@initate/typescale-generator:build[0m: cache hit, replaying output [2m5add6cb3f8a3494e[0m
+[32m@initate/typescale-generator:build: [0m
+[32m@initate/typescale-generator:build: [0m> @initate/typescale-generator@0.0.4 build
+[32m@initate/typescale-generator:build: [0m> tsup
+[32m@initate/typescale-generator:build: [0m
+[32m@initate/typescale-generator:build: [0mCLI Building entry: src/index.ts, src/cli.ts
+[32m@initate/typescale-generator:build: [0mCLI Using tsconfig: tsconfig.json
+[32m@initate/typescale-generator:build: [0mCLI tsup v6.1.3
+[32m@initate/typescale-generator:build: [0mCLI Using tsup config: /Users/tbrasington/Documents/Code/projects/typescale-cli/packages/typecale-generator/package.json
+[32m@initate/typescale-generator:build: [0mCLI Target: node14
+[32m@initate/typescale-generator:build: [0mCLI Cleaning output folder
+[32m@initate/typescale-generator:build: [0mESM Build start
+[32m@initate/typescale-generator:build: [0mESM ⚡️ Build success in 14ms
+[32m@initate/typescale-generator:build: [0mESM dist/index.js     3.35 KB
+[32m@initate/typescale-generator:build: [0mESM dist/cli.js       5.91 KB
+[32m@initate/typescale-generator:build: [0mESM dist/cli.js.map   14.56 KB
+[32m@initate/typescale-generator:build: [0mESM dist/index.js.map 8.16 KB

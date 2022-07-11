@@ -43,15 +43,13 @@
     "sourcemap": true,
     "clean": true,
     "format": [
-      "esm",
-      "cjs",
-      "iife"
+      "esm"
     ]
   },
   "scripts": {
     "start": "npm run build-library && npm run global",
     "dev": "tsup  && npm run global ",
-    "build-library": "tsup",
+    "build": "tsup",
     "global": "npm i -g && typescale-cli",
     "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib",
     "test-libray": "NODE_OPTIONS=--experimental-vm-modules jest "

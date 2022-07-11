@@ -8,14 +8,16 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "build-library": "turbo run build-library",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo run test",
-    "test-library": "turbo run test-library"
+    "changeset": "turbo run test && changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=docs^... --filter=eslint-config-custom^...--filter=tsconfig^... && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.23.1",
     "prettier": "latest",
     "turbo": "latest"
   }
