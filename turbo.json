@@ -21,6 +21,26 @@
         "test/**/*.tsx"
       ]
     },
+    "build-library": {
+      "dependsOn": [
+        "^build-library"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "test-library": {
+      "dependsOn": [
+        "build-library"
+      ],
+      "outputs": [],
+      "inputs": [
+        "src/**/*.tsx",
+        "src/**/*.ts",
+        "test/**/*.ts",
+        "test/**/*.tsx"
+      ]
+    },
     "dev": {
       "cache": false
     }

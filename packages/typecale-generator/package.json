@@ -49,11 +49,11 @@
     ]
   },
   "scripts": {
-    "start": "npm run build && npm run global",
+    "start": "npm run build-library && npm run global",
     "dev": "tsup  && npm run global ",
-    "build": "tsup",
+    "build-library": "tsup",
     "global": "npm i -g && typescale-cli",
     "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest "
+    "test-libray": "NODE_OPTIONS=--experimental-vm-modules jest "
   }
 }
