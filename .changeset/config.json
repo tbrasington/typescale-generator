@@ -10,6 +10,6 @@
   "ignore": [
     "@initate/docs",
     "@initate/tsconfig",
-    "@initate/eslint"
+    "@initate/eslint-config"
   ]
 }
