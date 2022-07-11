@@ -1,6 +1,6 @@
 {
   "name": "@initate/typescale-generator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "Generates typescales in step increments or a with a template",
   "main": "./dist/index.js",
