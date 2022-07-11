@@ -55,5 +55,8 @@
     "global": "npm i -g && typescale-cli",
     "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib",
     "test-libray": "NODE_OPTIONS=--experimental-vm-modules jest "
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
