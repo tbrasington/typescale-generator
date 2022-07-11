@@ -8,8 +8,8 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "@initate/docs",
-    "@initate/tsconfig",
-    "@initate/eslint-config"
+    "@initiate-ui/docs",
+    "@initiate-ui/tsconfig",
+    "@initiate-ui/eslint-config"
   ]
 }

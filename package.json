@@ -1,5 +1,5 @@
 {
-  "name": "initate-monorepo",
+  "name": "initiate-ui-monorepo",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
@@ -14,7 +14,7 @@
     "test": "turbo run test",
     "changeset": "turbo run test && changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build --filter=docs^... --filter=eslint-config-custom^...--filter=tsconfig^... && changeset publish"
+    "release": "turbo run build --filter=docs^... --filter=eslint-config^...--filter=tsconfig^... && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.23.1",

@@ -1,5 +1,5 @@
 {
-  "name": "@initate/docs",
+  "name": "@initiate-ui/docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,14 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@initate/typescale-generator": "*",
+    "@initiate-ui/typescale-generator": "*",
     "next": "^12.0.8",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@initate/eslint-config": "*",
-    "@initate/tsconfig": "*",
+    "@initiate-ui/eslint-config": "*",
+    "@initiate-ui/tsconfig": "*",
     "@types/node": "^17.0.12",
     "@types/react": "17.0.37",
     "eslint": "7.32.0",

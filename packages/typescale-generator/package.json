@@ -1,5 +1,5 @@
 {
-  "name": "@initate/typescale-generator",
+  "name": "@initiate-ui/typescale-generator",
   "version": "0.0.2",
   "type": "module",
   "description": "Generates typescales in step increments or a with a template",
