@@ -15,14 +15,14 @@ const Formats = [
     name: "Javascript object",
     value: "js",
   },
-  {
-    name: "Typescript object",
-    value: "js",
-  },
-  {
-    name: "Design tokens spec JSON",
-    value: "json",
-  },
+  // {
+  //   name: "Typescript object",
+  //   value: "js",
+  // },
+  // {
+  //   name: "Design tokens spec JSON",
+  //   value: "json",
+  // },
 ];
 const questions = [
   {
