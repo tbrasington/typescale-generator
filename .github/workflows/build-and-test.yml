@@ -2,7 +2,7 @@ name: Test library
 
 on:
   push:
-    branches: ["main","turbo"]
+    branches: ["main"]
 
 jobs:
   build-typescale-library:
