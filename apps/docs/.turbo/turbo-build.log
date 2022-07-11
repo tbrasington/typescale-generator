@@ -1,0 +1,24 @@
+[34mdocs:build[0m: cache hit, replaying output [2m2f4ca9b2928a54b0[0m
+[34mdocs:build: [0m
+[34mdocs:build: [0m> docs@0.0.0 build
+[34mdocs:build: [0m> next build
+[34mdocs:build: [0m
+[34mdocs:build: [0minfo  - Checking validity of types...
+[34mdocs:build: [0minfo  - Creating an optimized production build...
+[34mdocs:build: [0minfo  - Compiled successfully
+[34mdocs:build: [0minfo  - Collecting page data...
+[34mdocs:build: [0minfo  - Generating static pages (0/3)
+[34mdocs:build: [0minfo  - Generating static pages (3/3)
+[34mdocs:build: [0minfo  - Finalizing page optimization...
+[34mdocs:build: [0m
+[34mdocs:build: [0mPage                                       Size     First Load JS
+[34mdocs:build: [0m┌ ○ /                                      275 B          71.3 kB
+[34mdocs:build: [0m└ ○ /404                                   193 B          71.2 kB
+[34mdocs:build: [0m+ First Load JS shared by all              71 kB
+[34mdocs:build: [0m  ├ chunks/framework-71a68fe8ccf96ad8.js   42 kB
+[34mdocs:build: [0m  ├ chunks/main-24e9726f06e44d56.js        26.9 kB
+[34mdocs:build: [0m  ├ chunks/pages/_app-2ad88a182aea1df3.js  1.37 kB
+[34mdocs:build: [0m  └ chunks/webpack-45f9f9587e6c08e1.js     729 B
+[34mdocs:build: [0m
+[34mdocs:build: [0m○  (Static)  automatically rendered as static HTML (uses no initial props)
+[34mdocs:build: [0m

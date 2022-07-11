@@ -8,8 +8,12 @@ on:
     types: [created]
 
 jobs:
-  build:
+  build-typescale-library:
+    name: "Build typescale-library"
     runs-on: ubuntu-latest
+    defaults:
+      run: 
+        working-directory: 'packages/typescale-generator'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -19,7 +23,7 @@ jobs:
       - run: npm test
 
   publish-npm:
-    needs: build
+    needs: build-typescale-library
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
