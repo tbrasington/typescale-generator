@@ -47,8 +47,8 @@
     ]
   },
   "scripts": {
-    "start": "npm run build && npm run global",
-    "dev": "tsup  && npm run global ",
+    "cli": "npm run build && npm run global",
+    "cli-dev": "npm run build && node dist/cli.js",
     "build": "tsup",
     "global": "npm i -g && typescale-cli",
     "clean:all": "rm -rf ./node_modules ./package-lock.json ./dist",
