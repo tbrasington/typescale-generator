@@ -13,9 +13,6 @@ jobs:
   build-typescale-library:
     name: "Build typescale-library"
     runs-on: ubuntu-latest
-    defaults:
-      run: 
-        working-directory: '../../packages/typescale-generator'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
