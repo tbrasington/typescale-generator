@@ -47,12 +47,12 @@
     ]
   },
   "scripts": {
-    "start": "npm run build-library && npm run global",
+    "start": "npm run build && npm run global",
     "dev": "tsup  && npm run global ",
     "build": "tsup",
     "global": "npm i -g && typescale-cli",
-    "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib",
-    "test-libray": "NODE_OPTIONS=--experimental-vm-modules jest "
+    "clean:all": "rm -rf ./node_modules ./package-lock.json ./dist",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest "
   },
   "publishConfig": {
     "access": "public"
