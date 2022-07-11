@@ -1,0 +1,1 @@
+export { generateNamedScales } from './src/utils/scales'
