@@ -64,19 +64,18 @@ const questions = [
 
 export function cli() {
   inquirer.prompt(questions).then((answers) => {
-    console.log(JSON.stringify(answers, null, "  "));
+    //console.log(JSON.stringify(answers, null, "  "));
 
     // work out if it can save in the folder the user has prompted
 
     const ScaleValues = generateNamedScales(answers.type_scale).typeScale;
     // these all need to be options that toggle depending on choices
 
-
     // generate object for JS/TS users using CSS
     const typeSteps = generateObject({ scales: ScaleValues });
 
     // generate JS/TS object justing using the min/max values
-    if (answers.formats.find((item: string) => item ==="js")) {
+    if (answers.formats.find((item: string) => item === "js")) {
       const jsFile = `${answers.file}/index.js`;
       fs.outputFile(
         jsFile,
@@ -84,7 +83,7 @@ export function cli() {
       )
         .then(() => fs.readFile(jsFile, "utf8"))
         .then((data) => {
-          console.log("index.js file created!");
+          console.log(kleur.green().bold("index.js file created!"));
         })
         .catch((err) => {
           console.error(err);
@@ -92,13 +91,13 @@ export function cli() {
     }
 
     // generate a CSS file using the clamp values + a fall back with breakpoints
-    if (answers.formats.find((item: string) => item ==="css")) {
+    if (answers.formats.find((item: string) => item === "css")) {
       const typeStepsCSS = generateCSS({ scales: ScaleValues });
       const cssFile = `${answers.file}/index.css`;
       fs.outputFile(cssFile, typeStepsCSS)
         .then(() => fs.readFile(cssFile, "utf8"))
         .then((data) => {
-          console.log("index.css file created!");
+          console.log(kleur.green().bold("index.css file created!"));
         })
         .catch((err) => {
           console.error(err);
