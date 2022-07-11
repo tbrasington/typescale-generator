@@ -1,6 +1,6 @@
-[32m@initate/typescale-generator:build[0m: cache hit, replaying output [2m5add6cb3f8a3494e[0m
+[32m@initate/typescale-generator:build[0m: cache hit, replaying output [2mc1950b31ab7e45d1[0m
 [32m@initate/typescale-generator:build: [0m
-[32m@initate/typescale-generator:build: [0m> @initate/typescale-generator@0.0.4 build
+[32m@initate/typescale-generator:build: [0m> @initate/typescale-generator@0.0.1 build
 [32m@initate/typescale-generator:build: [0m> tsup
 [32m@initate/typescale-generator:build: [0m
 [32m@initate/typescale-generator:build: [0mCLI Building entry: src/index.ts, src/cli.ts
@@ -11,7 +11,7 @@
 [32m@initate/typescale-generator:build: [0mCLI Cleaning output folder
 [32m@initate/typescale-generator:build: [0mESM Build start
 [32m@initate/typescale-generator:build: [0mESM ⚡️ Build success in 14ms
-[32m@initate/typescale-generator:build: [0mESM dist/index.js     3.35 KB
 [32m@initate/typescale-generator:build: [0mESM dist/cli.js       5.91 KB
+[32m@initate/typescale-generator:build: [0mESM dist/index.js     3.35 KB
 [32m@initate/typescale-generator:build: [0mESM dist/cli.js.map   14.56 KB
 [32m@initate/typescale-generator:build: [0mESM dist/index.js.map 8.16 KB
