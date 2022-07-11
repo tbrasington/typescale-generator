@@ -1,0 +1,59 @@
+{
+  "name": "@initate/typescale-generator",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Generates typescales in step increments or a with a template",
+  "main": "./dist/index.js",
+  "bin": {
+    "typescale-cli": "./dist/cli.js"
+  },
+  "author": "Thomas Brasington<mail@tbrasington.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@inquirer/select": "^0.0.21-alpha.0",
+    "figlet": "^1.5.2",
+    "fs-extra": "^10.1.0",
+    "inquirer": "^9.0.0",
+    "inversify": "^6.0.1",
+    "kleur": "^4.1.5",
+    "reflect-metadata": "^0.1.13",
+    "tslib": "^2.4.0"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/figlet": "^1.5.4",
+    "@types/fs-extra": "^9.0.13",
+    "@types/inquirer": "^8.2.1",
+    "@types/jest": "^28.1.4",
+    "@types/node": "^18.0.3",
+    "cpy-cli": "^4.1.0",
+    "jest": "^28.1.2",
+    "ts-jest": "^28.0.5",
+    "ts-node": "^10.8.2",
+    "tsup": "^6.1.3",
+    "typedoc": "^0.23.5",
+    "typescript": "^4.7.4"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts",
+      "src/cli.ts"
+    ],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true,
+    "format": [
+      "esm",
+      "cjs",
+      "iife"
+    ]
+  },
+  "scripts": {
+    "start": "npm run build && npm run global",
+    "dev": "tsup  && npm run global ",
+    "build": "tsup",
+    "global": "npm i -g && typescale-cli",
+    "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest "
+  }
+}

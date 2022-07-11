@@ -1,4 +1,4 @@
-import { GeneratedItemProps, GenericKeyValueProps } from "./";
+import { GeneratedItemProps, GenericKeyValueProps } from ".";
 
 
 export function generateCSS({ scales }: { scales: GeneratedItemProps[]; }) {
