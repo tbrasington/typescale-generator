@@ -27,7 +27,7 @@ const Formats = [
 ];
 const questions = [
   {
-    type: "list", // replace with select https://github.com/SBoudrias/Inquirer.js/tree/master/packages/select
+    type: "list",
     name: "type_scale",
     message: "What type scale do you want to use?",
     choices: Object.keys(TypographyScaleValues).map(
@@ -78,17 +78,16 @@ const questions = [
 export function cli() {
   inquirer.prompt(questions).then((answers) => {
  
-
+    // What range of steps, do they need?
     const RangeOfSteps = generateRange({
       min: answers.step_min ,
       max: answers.step_max
     });
 
-    // work out if it can save in the folder the user has prompted
-
+    // build the scale values out, with their css values, and min / max number values
     const ScaleValues = generateNamedScales(answers.type_scale,RangeOfSteps).typeScale;
-    // these all need to be options that toggle depending on choices
 
+    
     // generate object for JS/TS users using CSS
     const typeSteps = generateObject({ scales: ScaleValues });
 
