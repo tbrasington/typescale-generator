@@ -12,7 +12,7 @@ export interface GeneratedNamedScalesProps {
 
 export interface GeneratedItemProps {
   min: ViewPortProps;
-  max: ViewPortProps;
+  max?: ViewPortProps;
   clamp: string;
 }
 
@@ -65,12 +65,12 @@ export const TypographyScaleValues = {
  */
 export function generateNamedScales(scale: NamedScalesProps) {
   const config = {
-    minViewport: {
+    min: {
       width: 320,
       fontSize: 16,
       typeScale: TypographyScaleValues[scale].value,
     },
-    maxViewport: {
+    max: {
       width: 1440,
       fontSize: 20,
       typeScale: TypographyScaleValues[scale].value,
@@ -84,3 +84,5 @@ export function generateNamedScales(scale: NamedScalesProps) {
 
   return typographyScales;
 }
+
+export {stepValues} from "./stepValues";

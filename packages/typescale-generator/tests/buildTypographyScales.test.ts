@@ -4,12 +4,12 @@ test('Builds the typographic scale', () => {
 
   const scale = buildTypographyScales({
     range : [-1,0,2],
-    minViewport : {
+    min : {
       width : 320,
       fontSize : 16,
       typeScale : TypographyScaleValues.MINOR_SECOND.value,
     },
-    maxViewport : {
+    max : {
       width : 1440,
       fontSize : 20,
       typeScale : TypographyScaleValues.PERFECT_FOURTH.value,

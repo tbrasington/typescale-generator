@@ -1,9 +1,9 @@
-import { ViewPortProps, GeneratedNamedScalesProps } from ".";
+import { ViewPortProps, GeneratedNamedScalesProps, stepValues } from ".";
 import { round } from "../round";
 import { clampBuilder } from "./clampBuilder";
 
 /**
- * @returns An object of CSS clamped values and their min and max number values, corresponding to their step.
+ * @returns An array of units and clamped values.
  * ```js
  *    {
  *      typeScale = {
@@ -26,12 +26,12 @@ import { clampBuilder } from "./clampBuilder";
  * @example 
  * ```js
 *   buildTypographyScales({
-      minViewport: {
+      min: {
         width: 320,
         fontSize: 16,
         typeScale: TypographyScaleValues[scale].value,
       },
-      maxViewport: {
+      max: {
         width: 1440,
         fontSize: 20,
         typeScale: TypographyScaleValues[scale].value,
@@ -42,10 +42,10 @@ import { clampBuilder } from "./clampBuilder";
  */
 export function buildTypographyScales(opts: {
   range: number[];
-  minViewport: ViewPortProps;
-  maxViewport: ViewPortProps;
+  min: ViewPortProps;
+  max?: ViewPortProps;
 }) {
-  const { minViewport, maxViewport, range } = opts;
+  const { min, max, range } = opts;
 
   const system: GeneratedNamedScalesProps = {
     typeScale: [],
@@ -54,32 +54,12 @@ export function buildTypographyScales(opts: {
   const minFluidTypeStep = range[0];
   const maxFluidTypeStep = range[range.length - 1];
   for (let i = minFluidTypeStep; i <= maxFluidTypeStep; i++) {
-    const valueMin = round(
-      minViewport.fontSize * Math.pow(minViewport.typeScale, i)
-    );
-
-    const valueMax = round(
-      maxViewport.fontSize * Math.pow(maxViewport.typeScale, i)
-    );
-
-    system.typeScale[i] = {
-      min: {
-        fontSize: valueMin,
-        width: minViewport.width,
-        typeScale: minViewport.typeScale,
-      },
-      max: {
-        fontSize: valueMax,
-        width: minViewport.width,
-        typeScale: minViewport.typeScale,
-      },
-      clamp: clampBuilder(
-        minViewport.width,
-        maxViewport.width,
-        valueMin,
-        valueMax
-      ),
-    };
+   
+    system.typeScale[i] = stepValues({
+      min: min,
+      max: max,
+      step: i,
+    })
   }
 
   return {
