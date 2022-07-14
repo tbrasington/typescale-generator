@@ -8,7 +8,7 @@ Object {
       "max": Object {
         "fontSize": 20,
         "typeScale": 1.067,
-        "width": 320,
+        "width": 1440,
       },
       "min": Object {
         "fontSize": 16,
@@ -21,7 +21,7 @@ Object {
       "max": Object {
         "fontSize": 21.34,
         "typeScale": 1.067,
-        "width": 320,
+        "width": 1440,
       },
       "min": Object {
         "fontSize": 17.07,
@@ -34,7 +34,7 @@ Object {
       "max": Object {
         "fontSize": 22.77,
         "typeScale": 1.067,
-        "width": 320,
+        "width": 1440,
       },
       "min": Object {
         "fontSize": 18.22,
@@ -47,7 +47,7 @@ Object {
       "max": Object {
         "fontSize": 24.3,
         "typeScale": 1.067,
-        "width": 320,
+        "width": 1440,
       },
       "min": Object {
         "fontSize": 19.44,
@@ -60,7 +60,7 @@ Object {
       "max": Object {
         "fontSize": 25.92,
         "typeScale": 1.067,
-        "width": 320,
+        "width": 1440,
       },
       "min": Object {
         "fontSize": 20.74,
@@ -73,7 +73,7 @@ Object {
       "max": Object {
         "fontSize": 27.66,
         "typeScale": 1.067,
-        "width": 320,
+        "width": 1440,
       },
       "min": Object {
         "fontSize": 22.13,

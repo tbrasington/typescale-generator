@@ -16,6 +16,10 @@ export interface GeneratedItemProps {
   clamp: string;
 }
 
+export interface RangeProps {
+  min:number
+  max:number
+}
 export interface GenericKeyValueProps {
   [key: string]: string;
 }
@@ -63,7 +67,7 @@ export const TypographyScaleValues = {
  * @param scale the scale to use for generation
  * @returns A generated set of scales using the specified scale, along with the min max sizes for a breakpoint
  */
-export function generateNamedScales(scale: NamedScalesProps) {
+export function generateNamedScales(scale: NamedScalesProps, range : number[]) {
   const config = {
     min: {
       width: 320,
@@ -79,7 +83,7 @@ export function generateNamedScales(scale: NamedScalesProps) {
 
   const typographyScales = buildTypographyScales({
     ...config,
-    range: [-2, -1, 0, 1, 2, 3, 4, 5],
+    range: range,
   });
 
   return typographyScales;

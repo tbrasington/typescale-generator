@@ -1,1 +1,1 @@
-export { generateNamedScales } from './utils/scales'
+export { generateNamedScales, stepValues } from './utils/scales'

@@ -7,8 +7,8 @@ Object {
       "clamp": "clamp(1rem, 0.93rem + 0.36vw, 1.25rem)",
       "max": Object {
         "fontSize": 20,
-        "typeScale": 1.067,
-        "width": 320,
+        "typeScale": 1.333,
+        "width": 1440,
       },
       "min": Object {
         "fontSize": 16,
@@ -20,8 +20,8 @@ Object {
       "clamp": "clamp(1.07rem, 0.9rem + 0.86vw, 1.67rem)",
       "max": Object {
         "fontSize": 26.66,
-        "typeScale": 1.067,
-        "width": 320,
+        "typeScale": 1.333,
+        "width": 1440,
       },
       "min": Object {
         "fontSize": 17.07,
@@ -33,8 +33,8 @@ Object {
       "clamp": "clamp(1.14rem, 0.83rem + 1.55vw, 2.22rem)",
       "max": Object {
         "fontSize": 35.54,
-        "typeScale": 1.067,
-        "width": 320,
+        "typeScale": 1.333,
+        "width": 1440,
       },
       "min": Object {
         "fontSize": 18.22,

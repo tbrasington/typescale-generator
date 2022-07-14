@@ -4,6 +4,7 @@ import kleur from "kleur";
 import { generateNamedScales, TypographyScaleValues } from "./utils/scales";
 import { generateCSS } from "./utils/scales/generateCSS";
 import { generateObject } from "./utils/scales/generateObject";
+import { generateRange } from "./utils/scales/generateRange";
 import fs from "fs-extra";
 
 const Formats = [
@@ -55,6 +56,18 @@ const questions = [
     },
   },
   {
+    type: "number",
+    name: "step_max",
+    message: "What is the largest step you want to generate? e.g. 6",
+    default: 6,
+  },
+  {
+    type: "number",
+    name: "step_min",
+    message: "What is the smallest step you want to generate? e.g. -2",
+    default: -2,
+  },
+  {
     type: "input",
     name: "file",
     message: "Where should we save the files?",
@@ -64,11 +77,16 @@ const questions = [
 
 export function cli() {
   inquirer.prompt(questions).then((answers) => {
-    //console.log(JSON.stringify(answers, null, "  "));
+ 
+
+    const RangeOfSteps = generateRange({
+      min: answers.step_min ,
+      max: answers.step_max
+    });
 
     // work out if it can save in the folder the user has prompted
 
-    const ScaleValues = generateNamedScales(answers.type_scale).typeScale;
+    const ScaleValues = generateNamedScales(answers.type_scale,RangeOfSteps).typeScale;
     // these all need to be options that toggle depending on choices
 
     // generate object for JS/TS users using CSS
@@ -107,3 +125,4 @@ export function cli() {
 }
 
 cli();
+ 
