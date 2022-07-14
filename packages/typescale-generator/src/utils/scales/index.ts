@@ -90,3 +90,5 @@ export function generateNamedScales(scale: NamedScalesProps, range : number[]) {
 }
 
 export {stepValues} from "./stepValues";
+export {numberToRem} from "./numberToRem";
+export {clampBuilder} from "./clampBuilder";

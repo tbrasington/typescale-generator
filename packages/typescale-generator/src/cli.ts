@@ -39,6 +39,30 @@ const questions = [
     },
   },
   {
+    type: "number",
+    name: "min_fontSize",
+    message: "What is base font size 16?",
+    default: 16,
+  },
+  {
+    type: "number",
+    name: "min_width",
+    message: "What is smallest viewport width? e.g. 320",
+    default: 320,
+  },
+  {
+    type: "number",
+    name: "step_max",
+    message: "What is the largest step you want to generate? e.g. 6",
+    default: 6,
+  },
+  {
+    type: "number",
+    name: "step_min",
+    message: "What is the smallest step you want to generate? e.g. -2",
+    default: -2,
+  },
+  {
     type: "checkbox",
     name: "formats",
     message: "What formats do you want to generate?",
@@ -54,18 +78,6 @@ const questions = [
       }
       return true;
     },
-  },
-  {
-    type: "number",
-    name: "step_max",
-    message: "What is the largest step you want to generate? e.g. 6",
-    default: 6,
-  },
-  {
-    type: "number",
-    name: "step_min",
-    message: "What is the smallest step you want to generate? e.g. -2",
-    default: -2,
   },
   {
     type: "input",
