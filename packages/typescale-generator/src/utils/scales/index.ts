@@ -65,6 +65,7 @@ export const TypographyScaleValues = {
 /**
  * Searches through chained references to replace reference with originating value
  * @param scale the scale to use for generation
+ * @param range an array of numbers
  * @returns A generated set of scales using the specified scale, along with the min max sizes for a breakpoint
  */
 export function generateNamedScales(scale: NamedScalesProps, range : number[]) {
