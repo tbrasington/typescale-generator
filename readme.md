@@ -3,6 +3,13 @@
 
 # Typescale generator
 
+
+```sh
+npm install @initiate-ui/typescale-generator
+```
+
+Generate a typography scale stack with the terminal
+
 ## cli
 
 ```zsh
