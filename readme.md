@@ -4,17 +4,21 @@
 # Typescale generator
 
 
+Install globally 
+
 ```sh
-npm install @initiate-ui/typescale-generator
+npm install -g @initiate-ui/typescale-generator
 ```
 
-Generate a typography scale stack with the terminal
+and generate a typography scale stack with the terminal
 
 ## cli
 
 ```zsh
 typescale-cli
 ```
+
+
 
 ## exposed functions
 
