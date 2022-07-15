@@ -1,5 +1,5 @@
-import {buildTypographyScales } from '../src/utils/scales/buildTypographyScales';
-import {TypographyScaleValues} from '../src/utils/scales'
+import {buildTypographyScales } from '../utils/scales/buildTypographyScales';
+import {TypographyScaleValues} from '../utils/interfaces'
 test('Builds the typographic scale', () => {
 
   const scale = buildTypographyScales({

@@ -1,4 +1,4 @@
-import { RangeProps } from ".";
+import { RangeProps } from "../interfaces";
 
 /** 
 * 

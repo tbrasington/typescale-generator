@@ -1,4 +1,4 @@
-import { generateRange } from "../src/utils/scales/generateRange";
+import { generateRange } from "../utils/scales/generateRange";
 
 describe("ranges", () => {
   test("Generate ranges for scales with a negative number", () => {

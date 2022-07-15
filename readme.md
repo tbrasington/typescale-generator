@@ -8,7 +8,12 @@ typescale-cli
 
 ## exposed functions
 
-generateNamedScales
+buildTypographyScales
+
 stepValues
 numberToRem
 clampBuilder
+
+## exposed objects/values
+
+TypographyScaleValues

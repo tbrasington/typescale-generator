@@ -1,4 +1,4 @@
-import { numberToRem } from "../src/utils/scales/numberToRem" 
+import { numberToRem } from "../utils/scales/numberToRem" 
 
 
 test('Generate a rem', () => {

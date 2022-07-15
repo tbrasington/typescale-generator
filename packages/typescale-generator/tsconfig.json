@@ -1,14 +1,8 @@
 {
   "compilerOptions": {
- 
     "target": "ESNext",
     "module": "ESNext",
-    "lib": [
-      "ES6",
-      "ES2015",
-      "ESNEXT",
-      "dom"
-    ],
+    "lib": ["ES6", "ES2015", "ESNEXT", "dom"],
     "incremental": true,
     "declaration": true,
     "outDir": "dist",
@@ -22,15 +16,8 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "baseUrl": "./",
-    "experimentalDecorators": true,
+    "experimentalDecorators": true
   },
-  "include": [
-    "src/**/*.ts",
-    "tests/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "tests",
-  ]
+  "include": ["src/**/*.ts", "src/tests/**/*.ts"],
+  "exclude": ["node_modules", "dist", "src/tests"]
 }

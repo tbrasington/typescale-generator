@@ -1,4 +1,4 @@
-import { clampBuilder } from "../src/utils/scales/clampBuilder"
+import { clampBuilder } from "../utils/scales/clampBuilder"
 
 
   test('Generate clamped sizes for css', () => {

@@ -1,4 +1,4 @@
-import { GeneratedItemProps, GenericKeyValueProps } from ".";
+import { GeneratedItemProps, GenericKeyValueProps } from "../interfaces";
 
 /**
  * @returns An object of CSS clamped values, corresponding to their step.

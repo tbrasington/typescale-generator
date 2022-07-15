@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import inquirer from "inquirer";
 import kleur from "kleur";
-import { generateNamedScales, TypographyScaleValues } from "./utils/scales";
+import { buildTypographyScales } from "./utils/scales";
+import { TypographyScaleValues } from "./utils/interfaces";
 import { generateCSS } from "./utils/scales/generateCSS";
 import { generateObject } from "./utils/scales/generateObject";
 import { generateRange } from "./utils/scales/generateRange";
@@ -25,6 +26,19 @@ const Formats = [
   //   value: "json",
   // },
 ];
+
+interface AnswerProps {
+  type_scale: string;
+  min_fontSize: number;
+  min_width: number;
+  add_max?: boolean;
+  max_fontSize?: number;
+  max_width?: number;
+  step_max: number;
+  step_min: number;
+  formats: string[];
+  file: string;
+}
 const questions = [
   {
     type: "list",
@@ -49,6 +63,27 @@ const questions = [
     name: "min_width",
     message: "What is smallest viewport width? e.g. 320",
     default: 320,
+  },
+  {
+    type: "confirm",
+    name: "add_max",
+    message: "Do you want to add max width and font size?",
+  },
+  {
+    type: "number",
+    name: "max_fontSize",
+    message: "What's the max font size?",
+    when(answers: AnswerProps) {
+      return answers.add_max;
+    },
+  },
+  {
+    type: "number",
+    name: "max_width",
+    message: "What's the max width?",
+    when(answers: AnswerProps) {
+      return answers.max_fontSize;
+    },
   },
   {
     type: "number",
@@ -88,18 +123,37 @@ const questions = [
 ];
 
 export function cli() {
-  inquirer.prompt(questions).then((answers) => {
- 
+  inquirer.prompt(questions).then((answers: AnswerProps) => {
     // What range of steps, do they need?
+    console.log({ answers });
     const RangeOfSteps = generateRange({
-      min: answers.step_min ,
-      max: answers.step_max
+      min: answers.step_min,
+      max: answers.step_max,
     });
 
-    // build the scale values out, with their css values, and min / max number values
-    const ScaleValues = generateNamedScales(answers.type_scale,RangeOfSteps).typeScale;
+    // assemble the config
 
-    
+    const ScaleConfig = {
+      min: {
+        fontSize: answers.min_fontSize,
+        width: answers.min_width,
+        typeScale: TypographyScaleValues[answers.type_scale].value,
+      },
+      max:
+        answers.max_fontSize && answers.max_width
+          ? {
+              fontSize: answers.max_fontSize,
+              width: answers.max_width,
+              typeScale: TypographyScaleValues[answers.type_scale].value,
+            }
+          : undefined,
+    };
+    // build the scale values out, with their css values, and min / max number values
+    const ScaleValues = buildTypographyScales({
+      ...ScaleConfig,
+      range: RangeOfSteps,
+    }).typeScale;
+
     // generate object for JS/TS users using CSS
     const typeSteps = generateObject({ scales: ScaleValues });
 
@@ -136,4 +190,3 @@ export function cli() {
 }
 
 cli();
- 

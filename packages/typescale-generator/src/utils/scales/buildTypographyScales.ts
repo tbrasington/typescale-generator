@@ -1,9 +1,11 @@
-import { ViewPortProps, GeneratedNamedScalesProps, stepValues } from ".";
-import { round } from "../round";
-import { clampBuilder } from "./clampBuilder";
+import { stepValues } from ".";
+import { ViewPortProps, GeneratedNamedScalesProps } from "../interfaces";
 
 /**
- * @returns An array of units and clamped values.
+ * 
+ * @param opts.min the scale to use for generation
+ * @param opts.range an array of numbers
+ * @returns A generated set of scales using the specified scale, along with the min max sizes for a breakpoint
  * ```js
  *    {
  *      typeScale = {

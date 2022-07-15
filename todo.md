@@ -3,3 +3,6 @@
 [] allow font size and width to be inputted into generatedNamedScales
 [] allow config for min and max, or just one
 [] render style/family tokens from a json/token file
+
+- variable pairs of min font size + scale
+- breakpoint variations?

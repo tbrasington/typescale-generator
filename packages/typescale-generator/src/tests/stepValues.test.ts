@@ -1,5 +1,5 @@
-import { TypographyScaleValues } from "../src/utils/scales";
-import { stepValues } from "../src/utils/scales/stepValues";
+import { TypographyScaleValues } from "../utils/interfaces";
+import { stepValues } from "../utils/scales/stepValues";
 
 describe("Generate a set of step values", () => {
   test("snapshot with just a min", () => {

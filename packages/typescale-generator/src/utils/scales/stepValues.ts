@@ -1,4 +1,4 @@
-import { ViewPortProps } from ".";
+import { ViewPortProps } from "../interfaces";
 import { round } from "../round";
 import { clampBuilder } from "./clampBuilder";
 import { numberToRem } from "./numberToRem";
