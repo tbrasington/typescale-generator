@@ -69,11 +69,13 @@ const questions = [
     type: "confirm",
     name: "add_max",
     message: "Do you want to add max width and font size?",
+    default: true,
   },
   {
     type: "number",
     name: "max_fontSize",
     message: "What's the max font size?",
+    default: 24,
     when(answers: AnswerProps) {
       return answers.add_max;
     },
@@ -82,6 +84,7 @@ const questions = [
     type: "number",
     name: "max_width",
     message: "What's the max width?",
+    default: 1440,
     when(answers: AnswerProps) {
       return answers.max_fontSize;
     },
@@ -155,7 +158,7 @@ export function cli() {
       range: RangeOfSteps,
     }).typeScale;
 
-    
+
     // generate object for JS/TS users using CSS
     const typeSteps = generateObject({ scales: ScaleValues })
     const typePairs = generateObjectPairs({ scales: ScaleValues });;
@@ -165,9 +168,7 @@ export function cli() {
       const jsFile = `${answers.file}/index.js`;
       fs.outputFile(
         jsFile,
-        `
-        export const typeScale = ${JSON.stringify(typeSteps, null, "  ")}\n
-        export const typePairs = ${JSON.stringify(typePairs, null, "  ")}
+        `export const typographyClampedScale = ${JSON.stringify(typeSteps, null, "  ")}\nexport const typographyStepObject = ${JSON.stringify(typePairs, null, "  ")}
         `
       )
         .then(() => fs.readFile(jsFile, "utf8"))

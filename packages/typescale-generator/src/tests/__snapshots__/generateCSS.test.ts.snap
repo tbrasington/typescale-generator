@@ -2,13 +2,13 @@
 
 exports[`Generate a set of css variables 1`] = `
 ":root {
+  --step--2: clamp(0.88rem 0.82rem + 0.31vw 1.1rem);
+  --step--1: clamp(0.94rem 0.87rem + 0.33vw 1.17rem);
   --step-0: clamp(1rem 0.93rem + 0.36vw 1.25rem);
   --step-1: clamp(1.07rem 0.99rem + 0.38vw 1.33rem);
   --step-2: clamp(1.14rem 1.06rem + 0.41vw 1.42rem);
   --step-3: clamp(1.22rem 1.13rem + 0.43vw 1.52rem);
   --step-4: clamp(1.3rem 1.2rem + 0.46vw 1.62rem);
   --step-5: clamp(1.38rem 1.28rem + 0.49vw 1.73rem);
-  --step--2: clamp(0.88rem 0.82rem + 0.31vw 1.1rem);
-  --step--1: clamp(0.94rem 0.87rem + 0.33vw 1.17rem);
 }"
 `;
