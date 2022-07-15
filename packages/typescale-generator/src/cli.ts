@@ -7,6 +7,7 @@ import { generateCSS } from "./utils/scales/generateCSS";
 import { generateObject } from "./utils/scales/generateObject";
 import { generateRange } from "./utils/scales/generateRange";
 import fs from "fs-extra";
+import { generateObjectPairs } from "./utils/scales/generateObjectPairs";
 
 const Formats = [
   {
@@ -154,15 +155,20 @@ export function cli() {
       range: RangeOfSteps,
     }).typeScale;
 
+    
     // generate object for JS/TS users using CSS
-    const typeSteps = generateObject({ scales: ScaleValues });
+    const typeSteps = generateObject({ scales: ScaleValues })
+    const typePairs = generateObjectPairs({ scales: ScaleValues });;
 
     // generate JS/TS object justing using the min/max values
     if (answers.formats.find((item: string) => item === "js")) {
       const jsFile = `${answers.file}/index.js`;
       fs.outputFile(
         jsFile,
-        `export const typeScale = ${JSON.stringify(typeSteps, null, "  ")}`
+        `
+        export const typeScale = ${JSON.stringify(typeSteps, null, "  ")}\n
+        export const typePairs = ${JSON.stringify(typePairs, null, "  ")}
+        `
       )
         .then(() => fs.readFile(jsFile, "utf8"))
         .then((data) => {

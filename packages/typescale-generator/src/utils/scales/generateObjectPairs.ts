@@ -16,11 +16,11 @@ import { GeneratedItemProps, GenericKeyValueProps, TypeScaleProps } from "../int
  * ```
  */
 
-export function generateObject({ scales }: { scales: TypeScaleProps }) {
+export function generateObjectPairs({ scales }: { scales: TypeScaleProps; }) {
   const typeSteps: GenericKeyValueProps = {};
 
   for (const step of Object.keys(scales)) {
-    typeSteps[`${step}`] = scales[`${step}`].clamp;
+    typeSteps[`${step}`] = scales[(step)].clamp;
   }
 
   return typeSteps;

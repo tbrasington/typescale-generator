@@ -1,11 +1,11 @@
-import { GeneratedItemProps, GenericKeyValueProps } from "../interfaces";
+import { GeneratedItemProps, GenericKeyValueProps, TypeScaleProps } from "../interfaces";
 
 
-export function generateCSS({ scales }: { scales: GeneratedItemProps[]; }) {
+export function generateCSS({ scales }: { scales: TypeScaleProps; }) {
   const typeSteps: GenericKeyValueProps = {};
 
   for (const step of Object.keys(scales)) {
-    typeSteps[`--step-${step}`] = `${scales[parseInt(step)].clamp};`;
+    typeSteps[`--${step}`] = `${scales[`${step}`].clamp};`;
   }
 
   return `:root ${JSON.stringify(typeSteps, null, "  ").replace(/"/g, "").replace(/,/g, "")}`;

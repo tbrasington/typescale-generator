@@ -50,14 +50,14 @@ export function buildTypographyScales(opts: {
   const { min, max, range } = opts;
 
   const system: GeneratedNamedScalesProps = {
-    typeScale: [],
+    typeScale: {},
   };
 
   const minFluidTypeStep = range[0];
   const maxFluidTypeStep = range[range.length - 1];
   for (let i = minFluidTypeStep; i <= maxFluidTypeStep; i++) {
    
-    system.typeScale[i] = stepValues({
+    system.typeScale[`step-${i}`] = stepValues({
       min: min,
       max: max,
       step: i,

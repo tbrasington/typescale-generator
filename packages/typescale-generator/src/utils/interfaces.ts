@@ -5,9 +5,11 @@ export interface ViewPortProps {
   typeScale: number;
 }
 
+export type TypeScaleProps = {[key: string]: GeneratedItemProps}
 export interface GeneratedNamedScalesProps {
-  typeScale: GeneratedItemProps[];
+  typeScale: TypeScaleProps
 }
+
 
 export interface GeneratedItemProps {
   min: ViewPortProps;
