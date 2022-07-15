@@ -1,3 +1,5 @@
+![npm](https://img.shields.io/npm/v/@initiate-ui/typescale-generator)
+
 # Typescale generator
 
 ## cli
