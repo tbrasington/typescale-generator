@@ -132,7 +132,7 @@ export function cli() {
     });
 
     // assemble the config
-
+    // only add a max if there is one
     const ScaleConfig = {
       min: {
         fontSize: answers.min_fontSize,
