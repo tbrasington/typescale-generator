@@ -19,7 +19,6 @@ export default function Docs() {
       typeScale: TypographyScaleValues.PERFECT_FOURTH.value,
     },
   });
-  console.log(scale);
   return (
     <div>
       <h1>Docs</h1>

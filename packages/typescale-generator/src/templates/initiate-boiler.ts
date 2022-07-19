@@ -20,12 +20,12 @@ const boiler = {
     },
     fontScales: {
       min : {
-        scale : TypographyScaleValues[NamedScales.MAJOR_THIRD].value,
+        scale : TypographyScaleValues["MAJOR_SEVENTH"].value,
         width  : 320,
         $description : "Base font scale, mobile upwards"
       },
        max : {
-        scale : TypographyScaleValues[NamedScales.MAJOR_THIRD].value,
+        scale : TypographyScaleValues["MAJOR_SIXTH"].value,
         width  : 1440,
         $description : "Base font scale, mobile upwards"
       }
