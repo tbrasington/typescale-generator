@@ -1,5 +1,17 @@
 # @initate/typescale-generator
 
+## 0.0.6
+
+### Patch Changes
+
+- 4078de6: Exposed additional functions and better typings for available scales
+
+  Functions:
+
+  - generateRange,
+  - generateCSS,
+  - generateObject
+
 ## 0.0.5
 
 ### Patch Changes
