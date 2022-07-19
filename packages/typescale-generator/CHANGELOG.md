@@ -1,5 +1,11 @@
 # @initate/typescale-generator
 
+## 0.0.7
+
+### Patch Changes
+
+- 869e426: Actually expose functions
+
 ## 0.0.6
 
 ### Patch Changes
