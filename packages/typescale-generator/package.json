@@ -4,6 +4,8 @@
   "type": "module",
   "description": "Generates typescales in step increments or a with a template",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "bin": {
     "typescale-cli": "./dist/cli.js"
   },
@@ -42,9 +44,11 @@
     "splitting": false,
     "sourcemap": true,
     "clean": true,
+    "dts": true,
     "format": [
       "esm",
-      "cjs"
+      "cjs",
+      "iife"
     ]
   },
   "scripts": {
