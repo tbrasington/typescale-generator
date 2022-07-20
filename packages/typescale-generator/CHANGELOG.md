@@ -1,5 +1,11 @@
 # @initate/typescale-generator
 
+## 1.0.1
+
+### Patch Changes
+
+- bbee9ea: package json fix
+
 ## 1.0.0
 
 ### Major Changes
