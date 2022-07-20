@@ -1,10 +1,9 @@
 {
   "name": "@initiate-ui/typescale-generator",
   "version": "1.0.0",
-  "type": "module",
   "description": "Generates typescales in step increments or a with a template",
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "author": "Thomas Brasington<mail@tbrasington.com>",
   "license": "MIT",
