@@ -1,13 +1,8 @@
 #!/usr/bin/env node
 import inquirer from "inquirer";
 import kleur from "kleur";
-import { buildTypographyScales } from "./utils/scales";
-import { NamedScalesProps, TypographyScaleValues } from "./utils/interfaces";
-import { generateCSS } from "./utils/scales/generateCSS";
-import { generateObject } from "./utils/scales/generateObject";
-import { generateRange } from "./utils/scales/generateRange";
 import fs from "fs-extra";
-import { generateObjectPairs } from "./utils/scales/generateObjectPairs";
+import { generateObjectPairs , buildTypographyScales, generateRange , generateObject,generateCSS, NamedScalesProps, TypographyScaleValues} from "@initiate-ui/typescale-generator";
 
 const Formats = [
   {

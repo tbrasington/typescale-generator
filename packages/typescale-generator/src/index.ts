@@ -6,5 +6,6 @@ export {
   generateRange,
   generateCSS,
   generateObject,
+  generateObjectPairs
 } from "./utils/scales";
-export { TypographyScaleValues } from "./utils/interfaces";
+export { TypographyScaleValues,NamedScales } from "./utils/interfaces";

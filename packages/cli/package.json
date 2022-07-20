@@ -1,14 +1,25 @@
 {
-  "name": "@initiate-ui/typescale-generator",
-  "version": "0.0.9",
+  "name": "@initiate-ui/typescale-cli",
+  "version": "0.0.0",
   "type": "module",
   "description": "Generates typescales in step increments or a with a template",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "typescale-cli": "./dist/index.js"
+  },
   "author": "Thomas Brasington<mail@tbrasington.com>",
   "license": "MIT",
   "dependencies": {
+    "@initiate-ui/typescale-generator": "*",
+    "@inquirer/select": "^0.0.21-alpha.0",
+    "figlet": "^1.5.2",
+    "fs-extra": "^10.1.0",
+    "inquirer": "^9.0.0",
+    "inversify": "^6.0.1",
+    "kleur": "^4.1.5",
+    "reflect-metadata": "^0.1.13",
     "tslib": "^2.4.0"
   },
   "devDependencies": {
@@ -34,16 +45,15 @@
     "sourcemap": true,
     "clean": true,
     "format": [
-      "esm",
-      "cjs",
-      "iife"
+      "esm"
     ]
   },
   "scripts": {
-    "dev": "tsup --watch",
+    "cli": "npm run build && npm run global",
+    "cli-dev": "npm run build && node dist/index.js",
     "build": "tsup",
-    "clean:all": "rm -rf ./node_modules ./package-lock.json ./dist",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest "
+    "global": "npm i -g && typescale-cli",
+    "clean:all": "rm -rf ./node_modules ./package-lock.json ./dist"
   },
   "publishConfig": {
     "access": "public"
