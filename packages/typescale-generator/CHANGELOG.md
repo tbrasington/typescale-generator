@@ -1,5 +1,11 @@
 # @initate/typescale-generator
 
+## 1.0.0
+
+### Major Changes
+
+- e034700: release
+
 ## 0.0.9
 
 ### Patch Changes
