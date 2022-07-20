@@ -43,7 +43,7 @@
     "dev": "tsup --watch",
     "build": "tsup",
     "clean:all": "rm -rf ./node_modules ./package-lock.json ./dist",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest "
+    "test": "jest "
   },
   "publishConfig": {
     "access": "public"
