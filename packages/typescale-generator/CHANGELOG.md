@@ -1,5 +1,11 @@
 # @initate/typescale-generator
 
+## 0.0.8
+
+### Patch Changes
+
+- 99ed5c8: Provide commonjs exports
+
 ## 0.0.7
 
 ### Patch Changes
