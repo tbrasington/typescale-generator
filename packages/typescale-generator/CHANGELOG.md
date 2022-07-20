@@ -1,5 +1,11 @@
 # @initate/typescale-generator
 
+## 1.0.2
+
+### Patch Changes
+
+- 9846189: compiler options
+
 ## 1.0.1
 
 ### Patch Changes
