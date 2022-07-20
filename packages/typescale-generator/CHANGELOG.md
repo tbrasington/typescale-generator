@@ -1,5 +1,11 @@
 # @initate/typescale-generator
 
+## 0.0.9
+
+### Patch Changes
+
+- 3c2592b: build
+
 ## 0.0.8
 
 ### Patch Changes
