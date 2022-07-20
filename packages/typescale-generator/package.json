@@ -1,6 +1,6 @@
 {
   "name": "@initiate-ui/typescale-generator",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "type": "module",
   "description": "Generates typescales in step increments or a with a template",
   "main": "./dist/index.js",
