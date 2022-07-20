@@ -1,4 +1,4 @@
-import { GeneratedItemProps, GenericKeyValueProps, TypeScaleProps } from "../interfaces";
+import {  GenericKeyValueProps, TypeScaleProps } from "../interfaces";
 
 /**
  * @returns An object of CSS clamped values, corresponding to their step.
@@ -17,7 +17,7 @@ import { GeneratedItemProps, GenericKeyValueProps, TypeScaleProps } from "../int
  */
 
 export function generateObject({ scales }: { scales: TypeScaleProps }) {
-  const typeSteps: GenericKeyValueProps = {};
+  let typeSteps :GenericKeyValueProps= {} 
 
   for (const step of Object.keys(scales)) {
     typeSteps[`${step}`] = scales[`${step}`].clamp;

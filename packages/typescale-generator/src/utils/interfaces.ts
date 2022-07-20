@@ -21,7 +21,7 @@ export interface RangeProps {
   min: number;
   max: number;
 }
-export interface GenericKeyValueProps {
+export type GenericKeyValueProps =  {
   [key: string]: string;
 }
 
