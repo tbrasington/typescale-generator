@@ -1,5 +1,11 @@
 # @initate/typescale-generator
 
+## 1.0.3
+
+### Patch Changes
+
+- 0d938d6: Change typings
+
 ## 1.0.2
 
 ### Patch Changes
