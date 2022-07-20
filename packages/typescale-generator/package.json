@@ -43,7 +43,8 @@
     "sourcemap": true,
     "clean": true,
     "format": [
-      "esm"
+      "esm",
+      "cjs"
     ]
   },
   "scripts": {
