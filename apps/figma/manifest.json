@@ -1,9 +1,10 @@
 {
   "api": "1.0.0",
-  "name": "Generate typographic scales",
-  "main": "plugin.ts",
-  "ui": "ui.tsx",
   "editorType": [
     "figma"
-  ]
+  ],
+  "id": "typescale-geenerator",
+  "name": "@initiate-ui/figma-plugin-typscale-generator",
+  "main": "build/main.js",
+  "ui": "build/ui.js"
 }

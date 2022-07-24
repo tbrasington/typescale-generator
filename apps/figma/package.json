@@ -1,17 +1,31 @@
 {
-  "version": "0.0.1",
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-figma-plugin-ds": "^2.3.0"
+    "@create-figma-plugin/ui": "^2.1.1",
+    "@create-figma-plugin/utilities": "^2.1.1",
+    "preact": "^10",
+    "prismjs": "^1.28.0",
+    "react-simple-code-editor": "^0.11.2"
+  },
+  "devDependencies": {
+    "@create-figma-plugin/build": "^2.1.1",
+    "@create-figma-plugin/tsconfig": "^2.1.1",
+    "@figma/plugin-typings": "1.47.0",
+    "@types/prismjs": "^1.26.0",
+    "@types/react": "^18",
+    "react": "^18",
+    "typescript": "^4"
   },
   "scripts": {
-    "build": "figplug -O build"
+    "build": "build-figma-plugin --typecheck --minify",
+    "watch": "build-figma-plugin --typecheck --watch"
   },
-  "name": "@initiate-ui/typescale-figma",
-  "devDependencies": {
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "figplug": "^0.1.20"
+  "figma-plugin": {
+    "editorType": [
+      "figma"
+    ],
+    "id": "typescale-geenerator",
+    "name": "@initiate-ui/figma-plugin-typscale-generator",
+    "main": "src/main.ts",
+    "ui": "src/ui.tsx"
   }
 }
