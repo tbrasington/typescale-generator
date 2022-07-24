@@ -1,0 +1,9 @@
+{
+  "api": "1.0.0",
+  "name": "Generate typographic scales",
+  "main": "plugin.ts",
+  "ui": "ui.tsx",
+  "editorType": [
+    "figma"
+  ]
+}

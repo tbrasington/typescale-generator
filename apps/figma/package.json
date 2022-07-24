@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-figma-plugin-ds": "^2.3.0"
+  },
+  "scripts": {
+    "build": "figplug -O build"
+  },
+  "name": "@initiate-ui/typescale-figma",
+  "devDependencies": {
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "figplug": "^0.1.20"
+  }
+}
