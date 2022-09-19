@@ -1,0 +1,10 @@
+{
+  "normal": {
+    "$value": 400,
+    "$type": "fontWeight"
+  },
+  "bold": {
+    "$value": 700,
+    "$type": "fontWeight"
+  }
+}
