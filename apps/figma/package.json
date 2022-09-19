@@ -1,4 +1,5 @@
 {
+  "name": "@initiate-ui/figma-generator",
   "dependencies": {
     "@create-figma-plugin/ui": "^2.1.1",
     "@create-figma-plugin/utilities": "^2.1.1",
