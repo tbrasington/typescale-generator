@@ -7,7 +7,7 @@ import {
   TypographyScaleValues,
 } from "@initiate-ui/typescale-generator";
 const scaleSettings = buildTypographyScales({
-  range: [-1, 0, 2],
+  range: [-1, 0, 2, 3, 4, 5, 6],
   min: {
     width: 320,
     fontSize: 16,
@@ -28,6 +28,46 @@ const styles = {
       fontWeight: fontWeights.heading.normal.$value,
       letterSpacing: "0px",
       lineHeight: lineHeights.headings.$value,
+      fontSize: scaleSettings.typeScale["step-6"].min.fontSize,
+      fontSizes: [
+        {
+          $name: "320",
+          $value: scaleSettings.typeScale["step-6"].min.fontSize,
+        },
+        {
+          $name: "1440",
+          $value: scaleSettings.typeScale["step-6"].max?.fontSize,
+        },
+      ],
+    },
+  },
+  heading2: {
+    $type: "typography",
+    $value: {
+      fontFamily: fontFamily.heading.$value,
+      fontWeight: fontWeights.heading.normal.$value,
+      letterSpacing: "0px",
+      lineHeight: lineHeights.headings.$value,
+      fontSize: scaleSettings.typeScale["step-0"].min.fontSize,
+      fontSizes: [
+        {
+          $name: "320",
+          $value: scaleSettings.typeScale["step-0"].min.fontSize,
+        },
+        {
+          $name: "1440",
+          $value: scaleSettings.typeScale["step-0"].max?.fontSize,
+        },
+      ],
+    },
+  },
+  editorial: {
+    $type: "typography",
+    $value: {
+      fontFamily: fontFamily.body.$value,
+      fontWeight: fontWeights.body.normal.$value,
+      letterSpacing: "0px",
+      lineHeight: lineHeights.body.$value,
       fontSize: scaleSettings.typeScale["step-0"].min.fontSize,
       fontSizes: [
         {
@@ -42,4 +82,4 @@ const styles = {
     },
   },
 };
-export default { styles, scaleSettings };
+export default { namespace: "util", styles, scaleSettings };
