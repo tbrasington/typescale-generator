@@ -6,7 +6,7 @@
       "fontWeight": "{font.weight.heading.normal}",
       "letterSpacing": "0px",
       "lineHeight": "{lineheight.heading}",
-      "step": 0
+      "fontSize": "$step-1"
     }
   }
 }

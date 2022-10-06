@@ -5,16 +5,17 @@
     "@create-figma-plugin/utilities": "^2.1.1",
     "preact": "^10",
     "prismjs": "^1.28.0",
-    "react-simple-code-editor": "^0.11.2"
+    "react-simple-code-editor": "^0.11.2",
+    "@initiate-ui/typescale-generator": "*"
   },
   "devDependencies": {
     "@create-figma-plugin/build": "^2.1.1",
     "@create-figma-plugin/tsconfig": "^2.1.1",
     "@figma/plugin-typings": "1.47.0",
     "@types/prismjs": "^1.26.0",
-    "@types/react": "^18",
-    "react": "^18",
-    "typescript": "^4"
+    "@types/react": "^18.0.21",
+    "react": "^18.2.0",
+    "typescript": "^4.8.4"
   },
   "scripts": {
     "build-plugin": "build-figma-plugin --typecheck --minify",
@@ -27,6 +28,7 @@
     "id": "typescale-geenerator",
     "name": "@initiate-ui/figma-plugin-typscale-generator",
     "main": "src/main.ts",
-    "ui": "src/ui.tsx"
+    "ui": "src/ui.tsx",
+    "version": "0.0.1"
   }
 }
