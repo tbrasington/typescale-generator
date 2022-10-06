@@ -1,5 +1,6 @@
 {
   "name": "@initiate-ui/figma-generator",
+  "version": "0.0.1",
   "dependencies": {
     "@create-figma-plugin/ui": "^2.1.1",
     "@create-figma-plugin/utilities": "^2.1.1",
@@ -28,7 +29,6 @@
     "id": "typescale-geenerator",
     "name": "@initiate-ui/figma-plugin-typscale-generator",
     "main": "src/main.ts",
-    "ui": "src/ui.tsx",
-    "version": "0.0.1"
+    "ui": "src/ui.tsx"
   }
 }
