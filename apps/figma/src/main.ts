@@ -90,6 +90,7 @@ export default function () {
               weight,
               textStyle.$value.fontStyle as FontStyleProps
             );
+
             // set the name
             figmaTextStyle.name = property;
             figmaTextStyle.fontName = {
@@ -99,6 +100,21 @@ export default function () {
 
             // set the font size
             figmaTextStyle.fontSize = textStyle.$value.fontSize;
+
+            // set the line height
+            figmaTextStyle.lineHeight = {
+              unit: "PERCENT",
+              value: convertLineHeight(textStyle.$value.lineHeight),
+            };
+
+            //letterspacing
+            const letterSpacing = converLetterSpacing(
+              textStyle.$value.letterSpacing
+            );
+            figmaTextStyle.letterSpacing = {
+              unit: letterSpacing.unit,
+              value: letterSpacing.value,
+            };
 
             // save the id for later usage
             if (matchedStyle === undefined) {
@@ -133,7 +149,6 @@ function getFigmaFontStyle(weight: string, fontStyle: FontStyleProps) {
           IF italicOblique is null, do not add it
       */
 
-  console.log({ weight, fontStyle, convertedFontStyle, normalizedFontStyle });
   if (weight === "Normal" && convertedFontStyle) {
     normalizedFontStyle = convertedFontStyle;
   }
@@ -146,4 +161,31 @@ function getFigmaFontStyle(weight: string, fontStyle: FontStyleProps) {
   }
 
   return normalizedFontStyle;
+}
+
+/**
+ * Converts a line height into a "percentage" e.g. 1.2 becomes 120
+ * @param lineHeight
+ * @returns 1.2 => 120
+ */
+export function convertLineHeight(lineHeight: number) {
+  return Number(lineHeight ? lineHeight : 1) * 100;
+}
+
+export function converLetterSpacing(letterSpacing: string | number) {
+  let unit: "PIXELS" | "PERCENT" = "PERCENT";
+  const removePx = letterSpacing.toString().replace("px", "");
+  let value = Number(removePx);
+
+  if (typeof letterSpacing === "string") {
+    if (letterSpacing.includes("px")) {
+      unit = "PIXELS";
+    } else {
+      unit = "PERCENT";
+    }
+  }
+  if (typeof letterSpacing === "number") {
+    unit = "PERCENT";
+  }
+  return { unit: unit, value: value };
 }

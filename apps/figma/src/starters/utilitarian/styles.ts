@@ -26,7 +26,7 @@ const styles = {
     $value: {
       fontFamily: fontFamily.heading.$value,
       fontWeight: fontWeights.heading.normal.$value,
-      letterSpacing: "0px",
+      letterSpacing: "10px",
       lineHeight: lineHeights.headings.$value,
       fontSize: scaleSettings.typeScale["step-6"].min.fontSize,
       fontStyle: "normal",
@@ -47,7 +47,7 @@ const styles = {
     $value: {
       fontFamily: fontFamily.heading.$value,
       fontWeight: fontWeights.heading.normal.$value,
-      letterSpacing: "0px",
+      letterSpacing: "10",
       lineHeight: lineHeights.headings.$value,
       fontSize: scaleSettings.typeScale["step-0"].min.fontSize,
       fontStyle: "normal",
@@ -89,7 +89,7 @@ const styles = {
     $value: {
       fontFamily: fontFamily.heading.$value,
       fontWeight: fontWeights.heading.bold.$value,
-      letterSpacing: "0px",
+      letterSpacing: 120,
       lineHeight: lineHeights.headings.$value,
       fontSize: scaleSettings.typeScale["step-0"].min.fontSize,
       fontStyle: "italic",
