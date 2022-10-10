@@ -8,19 +8,31 @@ import {
 import { InsertCodeHandler } from "./types";
 
 import textStyles from "./starters/utilitarian/styles.js";
+import {
+  convertFontStyle,
+  getWeightName,
+} from "@initiate-ui/typescale-generator";
+import type { FontStyleProps } from "@initiate-ui/typescale-generator";
 
-type StyleProps = keyof typeof textStyles.styles;
+type TextStyleProps = keyof typeof textStyles.styles;
 
 export default function () {
   async function loadAllFonts() {
     const fontsToLoad = [];
     for (const property in textStyles.styles) {
       // get the text style values
-      const textStyle = textStyles.styles[property as StyleProps];
+      const textStyle = textStyles.styles[property as TextStyleProps];
+
+      const weight = getWeightName(textStyle.$value.fontWeight);
+      // figma uses real type faces so we have to only add italic or oblique if its there
+      const normalizedFontStyle = getFigmaFontStyle(
+        weight,
+        textStyle.$value.fontStyle as FontStyleProps
+      );
 
       fontsToLoad.push({
         family: textStyle.$value.fontFamily,
-        style: "Regular",
+        style: normalizedFontStyle,
       });
     }
 
@@ -48,7 +60,7 @@ export default function () {
         // loop through
         for (const property in textStylestoParse) {
           // get the text style values
-          const textStyle = textStyles.styles[property as StyleProps];
+          const textStyle = textStyles.styles[property as TextStyleProps];
 
           const failedLoad = status.find(
             (item) =>
@@ -56,7 +68,6 @@ export default function () {
               item.status === "failed"
           );
 
-          console.log({ font: textStyle.$value.fontFamily, failedLoad });
           if (failedLoad) {
             figma.notify(
               `We couldn't load in ${textStyle.$value.fontFamily} on the style ${property}`
@@ -71,23 +82,29 @@ export default function () {
                 style.getPluginData(`${textStyles.namespace}-${property}`)
             );
             // if we have a match, lets update it rather than dupe it
-            const style = matchedStyle ? matchedStyle : figma.createTextStyle();
-
+            const figmaTextStyle = matchedStyle
+              ? matchedStyle
+              : figma.createTextStyle();
+            const weight = getWeightName(textStyle.$value.fontWeight);
+            const normalizedFontStyle = getFigmaFontStyle(
+              weight,
+              textStyle.$value.fontStyle as FontStyleProps
+            );
             // set the name
-            style.name = property;
-            style.fontName = {
+            figmaTextStyle.name = property;
+            figmaTextStyle.fontName = {
               family: textStyle.$value.fontFamily,
-              style: "Regular",
+              style: normalizedFontStyle,
             };
 
             // set the font size
-            style.fontSize = textStyle.$value.fontSize;
+            figmaTextStyle.fontSize = textStyle.$value.fontSize;
 
             // save the id for later usage
             if (matchedStyle === undefined) {
-              style.setPluginData(
+              figmaTextStyle.setPluginData(
                 `${textStyles.namespace}-${property}`,
-                style.id
+                figmaTextStyle.id
               );
             }
           }
@@ -100,4 +117,22 @@ export default function () {
     figma.closePlugin();
   });
   showUI({ width: 320, height: 240 });
+}
+
+function getFigmaFontStyle(weight: string, fontStyle: FontStyleProps) {
+  const convertedFontStyle = convertFontStyle(fontStyle);
+  let normalizedFontStyle = weight;
+  console.log({ weight, fontStyle, convertedFontStyle });
+  /*
+          IF the typeface is normal and has italicOblique, remove the weight
+          IF italicOblique is null, do not add it
+      */
+  if (weight === "Normal" && convertedFontStyle) {
+    normalizedFontStyle = convertedFontStyle;
+  }
+  if (weight !== "Normal" && convertedFontStyle) {
+    normalizedFontStyle = weight + " " + convertedFontStyle;
+  }
+
+  return normalizedFontStyle;
 }

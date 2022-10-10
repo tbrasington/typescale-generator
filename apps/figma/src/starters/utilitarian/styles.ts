@@ -29,6 +29,7 @@ const styles = {
       letterSpacing: "0px",
       lineHeight: lineHeights.headings.$value,
       fontSize: scaleSettings.typeScale["step-6"].min.fontSize,
+      fontStyle: "normal",
       fontSizes: [
         {
           $name: "320",
@@ -49,6 +50,7 @@ const styles = {
       letterSpacing: "0px",
       lineHeight: lineHeights.headings.$value,
       fontSize: scaleSettings.typeScale["step-0"].min.fontSize,
+      fontStyle: "normal",
       fontSizes: [
         {
           $name: "320",
@@ -69,6 +71,7 @@ const styles = {
       letterSpacing: "0px",
       lineHeight: lineHeights.body.$value,
       fontSize: scaleSettings.typeScale["step-0"].min.fontSize,
+      fontStyle: "italic",
       fontSizes: [
         {
           $name: "320",

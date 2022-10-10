@@ -6,7 +6,11 @@ export {
   generateRange,
   generateCSS,
   generateObject,
-  generateObjectPairs
+  generateObjectPairs,
 } from "./utils/scales";
-export { TypographyScaleValues,NamedScales } from "./utils/interfaces";
+export { getWeightName } from "./utils/weights";
+export type { WeightProps } from "./utils/weights";
+export { convertFontStyle } from "./utils/style";
+export type { FontStyleProps } from "./utils/style";
+export { TypographyScaleValues, NamedScales } from "./utils/interfaces";
 // bump
