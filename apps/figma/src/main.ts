@@ -119,18 +119,29 @@ export default function () {
   showUI({ width: 320, height: 240 });
 }
 
+/**
+ * Converts normal font style into regular, then appends italic or oblique if needed
+ * @param weight
+ * @param fontStyle
+ * @returns
+ */
 function getFigmaFontStyle(weight: string, fontStyle: FontStyleProps) {
   const convertedFontStyle = convertFontStyle(fontStyle);
   let normalizedFontStyle = weight;
-  console.log({ weight, fontStyle, convertedFontStyle });
   /*
           IF the typeface is normal and has italicOblique, remove the weight
           IF italicOblique is null, do not add it
       */
+
+  console.log({ weight, fontStyle, convertedFontStyle, normalizedFontStyle });
   if (weight === "Normal" && convertedFontStyle) {
     normalizedFontStyle = convertedFontStyle;
   }
-  if (weight !== "Normal" && convertedFontStyle) {
+  if (
+    weight !== "Normal" &&
+    convertedFontStyle &&
+    convertedFontStyle !== "Regular"
+  ) {
     normalizedFontStyle = weight + " " + convertedFontStyle;
   }
 

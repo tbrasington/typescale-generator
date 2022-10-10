@@ -63,11 +63,74 @@ const styles = {
       ],
     },
   },
+  heading3: {
+    $type: "typography",
+    $value: {
+      fontFamily: fontFamily.heading.$value,
+      fontWeight: fontWeights.heading.bold.$value,
+      letterSpacing: "0px",
+      lineHeight: lineHeights.headings.$value,
+      fontSize: scaleSettings.typeScale["step-0"].min.fontSize,
+      fontStyle: "normal",
+      fontSizes: [
+        {
+          $name: "320",
+          $value: scaleSettings.typeScale["step-0"].min.fontSize,
+        },
+        {
+          $name: "1440",
+          $value: scaleSettings.typeScale["step-0"].max?.fontSize,
+        },
+      ],
+    },
+  },
+  heading4: {
+    $type: "typography",
+    $value: {
+      fontFamily: fontFamily.heading.$value,
+      fontWeight: fontWeights.heading.bold.$value,
+      letterSpacing: "0px",
+      lineHeight: lineHeights.headings.$value,
+      fontSize: scaleSettings.typeScale["step-0"].min.fontSize,
+      fontStyle: "italic",
+      fontSizes: [
+        {
+          $name: "320",
+          $value: scaleSettings.typeScale["step-0"].min.fontSize,
+        },
+        {
+          $name: "1440",
+          $value: scaleSettings.typeScale["step-0"].max?.fontSize,
+        },
+      ],
+    },
+  },
   editorial: {
     $type: "typography",
     $value: {
       fontFamily: fontFamily.body.$value,
       fontWeight: fontWeights.body.normal.$value,
+      letterSpacing: "0px",
+      lineHeight: lineHeights.body.$value,
+      fontSize: scaleSettings.typeScale["step-0"].min.fontSize,
+      fontStyle: "italic",
+      fontSizes: [
+        {
+          $name: "320",
+          $value: scaleSettings.typeScale["step-0"].min.fontSize,
+        },
+        {
+          $name: "1440",
+          $value: scaleSettings.typeScale["step-0"].max?.fontSize,
+        },
+      ],
+    },
+  },
+  editorialBold: {
+    $type: "typography",
+    $value: {
+      fontFamily: fontFamily.body.$value,
+      fontWeight: fontWeights.body.bold.$value,
       letterSpacing: "0px",
       lineHeight: lineHeights.body.$value,
       fontSize: scaleSettings.typeScale["step-0"].min.fontSize,
