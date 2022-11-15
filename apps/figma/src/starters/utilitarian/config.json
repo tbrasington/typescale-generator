@@ -1,0 +1,99 @@
+{
+  "config": {
+    "range": [-2, -1, 0, 1, 2, 3, 4],
+    "sizes": {
+      "min": {
+        "width": 320,
+        "fontSize": 16,
+        "typeScale": "MINOR_SECOND"
+      },
+      "max": {
+        "width": 1440,
+        "fontSize": 20,
+        "typeScale": "PERFECT_FOURTH"
+      }
+    }
+  },
+  "tokens": {
+    "font": {
+      "family": {
+        "heading": {
+          "$value": "Verdana",
+          "$type": "fontFamily"
+        },
+        "body": {
+          "$value": "Georgia",
+          "$type": "fontFamily"
+        }
+      },
+      "weight": {
+        "heading": {
+          "normal": {
+            "$value": 400,
+            "$type": "fontWeight"
+          },
+          "bold": {
+            "$value": 700,
+            "$type": "fontWeight"
+          }
+        },
+        "body": {
+          "normal": {
+            "$value": 400,
+            "$type": "fontWeight"
+          },
+          "bold": {
+            "$value": 700,
+            "$type": "fontWeight"
+          }
+        }
+      },
+      "lineHeight": {
+        "heading": {
+          "$value": 1.2,
+          "$type": "lineHeight"
+        },
+        "body": {
+          "$value": 1.4,
+          "$type": "lineHeight"
+        }
+      }
+    }
+  },
+
+  "styles": {
+    "heading1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.heading}",
+        "fontWeight": "{font.weight.heading.normal}",
+        "letterSpacing": "0px",
+        "lineHeight": "{font.lineheight.heading}",
+        "fontSize": null,
+        "fontScale": 5
+      }
+    },
+    "heading2": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.heading}",
+        "fontWeight": "{font.weight.heading.normal}",
+        "letterSpacing": "0px",
+        "lineHeight": "{font.lineheight.heading}",
+        "fontSize": null,
+        "fontScale": 4
+      }
+    },
+    "paragraph_small": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontWeight": "{font.weight.body.normal}",
+        "letterSpacing": "0px",
+        "lineHeight": "{font.lineheight.body}",
+        "fontSize": null,
+        "fontScale": 0
+      }
+    }
+  }
+}

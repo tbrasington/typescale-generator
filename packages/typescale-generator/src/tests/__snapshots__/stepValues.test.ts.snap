@@ -3,11 +3,12 @@
 exports[`Generate a set of step values snapshot with just a min 1`] = `
 Object {
   "clamp": "1.066875rem",
-  "max": undefined,
-  "min": Object {
-    "fontSize": 17.07,
-    "typeScale": 1.067,
-    "width": 320,
-  },
+  "sizes": Array [
+    Object {
+      "fontSize": 17.07,
+      "typeScale": 1.067,
+      "width": 320,
+    },
+  ],
 }
 `;

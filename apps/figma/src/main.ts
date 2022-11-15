@@ -52,6 +52,9 @@ export default function () {
   }
 
   on<InsertCodeHandler>("INSERT_CODE", async function () {
+
+
+
     await loadAllFonts()
       .then((status) => {
         console.log({ status });
@@ -188,4 +191,13 @@ export function converLetterSpacing(letterSpacing: string | number) {
     unit = "PERCENT";
   }
   return { unit: unit, value: value };
+}
+
+
+function splitTokenReference(string: string) {
+  return string.replace("{", "").replace("}", "").split(".");
+}
+
+function findReferenceValue(string: string[], tokens: object) {
+  return string.reduce((o: any, i) => o?.[i], tokens);
 }

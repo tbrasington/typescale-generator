@@ -2,7 +2,7 @@
 import inquirer from "inquirer";
 import kleur from "kleur";
 import fs from "fs-extra";
-import { generateObjectPairs , buildTypographyScales, generateRange , generateObject,generateCSS, NamedScalesProps, TypographyScaleValues} from "@initiate-ui/typescale-generator";
+import { generateObjectPairs , buildTypographyScales, generateRange , generateObject,generateCSS, NamedScales, TypographyScaleValues} from "@initiate-ui/typescale-generator";
 
 const Formats = [
   {
@@ -42,10 +42,10 @@ const questions = [
     message: "What type scale do you want to use?",
     choices: Object.keys(TypographyScaleValues).map(
       (key) =>
-        `${TypographyScaleValues[key as NamedScalesProps].name} (${TypographyScaleValues[key as NamedScalesProps].value})`
+        `${TypographyScaleValues[key].name} (${TypographyScaleValues[key].value})`
     ),
     filter(val: string)  {
-      return val.split("(")[0].trim().toUpperCase().replace(" ", "_") as NamedScalesProps;
+      return val.split("(")[0].trim().toUpperCase().replace(" ", "_") ;
     },
   },
   {
@@ -136,14 +136,14 @@ export function cli() {
       min: {
         fontSize: answers.min_fontSize,
         width: answers.min_width,
-        typeScale: TypographyScaleValues[answers.type_scale as NamedScalesProps].value,
+        typeScale: TypographyScaleValues[answers.type_scale].value,
       },
       max:
         answers.max_fontSize && answers.max_width
           ? {
               fontSize: answers.max_fontSize,
               width: answers.max_width,
-              typeScale: TypographyScaleValues[answers.type_scale as NamedScalesProps].value,
+              typeScale: TypographyScaleValues[answers.type_scale].value,
             }
           : undefined,
     };

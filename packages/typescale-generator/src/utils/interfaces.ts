@@ -3,6 +3,7 @@ export interface ViewPortProps {
   width: number;
   fontSize: number;
   typeScale: number;
+  $name?: string;
 }
 
 export type TypeScaleProps = {[key: string]: GeneratedItemProps}
@@ -12,8 +13,8 @@ export interface GeneratedNamedScalesProps {
 
 
 export interface GeneratedItemProps {
-  min: ViewPortProps;
-  max?: ViewPortProps;
+
+  sizes : ViewPortProps[];
   clamp: string;
 }
 
