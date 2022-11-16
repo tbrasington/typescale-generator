@@ -63,6 +63,7 @@ export function stepValues({ step, sizes}: {
     ) : undefined;
 
     return {
+      step : step,
       sizes: values,
       clamp: valueMax && max ? clampBuilder(
         min.width,

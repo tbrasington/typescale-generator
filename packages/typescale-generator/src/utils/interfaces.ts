@@ -13,7 +13,7 @@ export interface GeneratedNamedScalesProps {
 
 
 export interface GeneratedItemProps {
-
+  step : number,
   sizes : ViewPortProps[];
   clamp: string;
 }
