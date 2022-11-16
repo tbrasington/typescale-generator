@@ -2,7 +2,7 @@
 import inquirer from "inquirer";
 import kleur from "kleur";
 import fs from "fs-extra";
-import { generateObjectPairs , buildTypographyScales, generateRange , generateObject,generateCSS, NamedScales, TypographyScaleValues} from "@initiate-ui/typescale-generator";
+import { generateObjectPairs , buildTypographyScales, generateRange , generateObject,generateCSS, NamedScales, ViewPortProps, TypographyScaleValues} from "@initiate-ui/typescale-generator";
 
 const Formats = [
   {
@@ -132,24 +132,42 @@ export function cli() {
 
     // assemble the config
     // only add a max if there is one
-    const ScaleConfig = {
-      min: {
+    // const ScaleConfig = {
+    //   min: {
+    //     fontSize: answers.min_fontSize,
+    //     width: answers.min_width,
+    //     typeScale: TypographyScaleValues[answers.type_scale].value,
+    //   },
+    //   max:
+    //     answers.max_fontSize && answers.max_width
+    //       ? {
+    //           fontSize: answers.max_fontSize,
+    //           width: answers.max_width,
+    //           typeScale: TypographyScaleValues[answers.type_scale].value,
+    //         }
+    //       : undefined,
+    // };
+    const ScaleConfig : ViewPortProps[] = []
+    
+    if(answers.min_fontSize && answers.min_width) {
+      ScaleConfig.push({
+        "$name" : "min",
         fontSize: answers.min_fontSize,
         width: answers.min_width,
         typeScale: TypographyScaleValues[answers.type_scale].value,
-      },
-      max:
-        answers.max_fontSize && answers.max_width
-          ? {
-              fontSize: answers.max_fontSize,
-              width: answers.max_width,
-              typeScale: TypographyScaleValues[answers.type_scale].value,
-            }
-          : undefined,
-    };
+      })
+    }
+    if(answers.max_fontSize && answers.max_width) {
+      ScaleConfig.push({
+        "$name" : "max",
+        fontSize: answers.max_fontSize,
+        width: answers.max_width,
+        typeScale: TypographyScaleValues[answers.type_scale].value,
+      })
+    }
     // build the scale values out, with their css values, and min / max number values
     const ScaleValues = buildTypographyScales({
-      ...ScaleConfig,
+      sizes:ScaleConfig,
       range: RangeOfSteps,
     }).typeScale;
 
