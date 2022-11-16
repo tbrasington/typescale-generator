@@ -1,5 +1,11 @@
 # @initate/typescale-generator
 
+## 2.0.1
+
+### Patch Changes
+
+- e3470db: patched in step to object for filtering
+
 ## 2.0.0
 
 ### Major Changes
