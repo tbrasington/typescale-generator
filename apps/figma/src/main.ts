@@ -1,39 +1,34 @@
-import {
-  loadFontsAsync,
-  on,
-  once,
-  showUI,
-} from "@create-figma-plugin/utilities";
+import { on, showUI } from "@create-figma-plugin/utilities";
 
-import { InsertCodeHandler } from "./types";
+import { FontStyleDataProps, FontValueProps, InsertCodeHandler } from "./types";
 
-import textStyles from "./starters/utilitarian/styles.js";
 import {
+  buildTypographyScales,
   convertFontStyle,
   getWeightName,
 } from "@initiate-ui/typescale-generator";
 import type { FontStyleProps } from "@initiate-ui/typescale-generator";
 
-type TextStyleProps = keyof typeof textStyles.styles;
-
 export default function () {
-  async function loadAllFonts() {
+  async function loadAllFonts(styles: FontValueProps[]) {
     const fontsToLoad = [];
-    for (const property in textStyles.styles) {
+    for (const property in styles) {
       // get the text style values
-      const textStyle = textStyles.styles[property as TextStyleProps];
+      const textStyle = styles[property];
 
-      const weight = getWeightName(textStyle.$value.fontWeight);
+      const weight = getWeightName(Number(textStyle.fontWeight) || 400);
       // figma uses real type faces so we have to only add italic or oblique if its there
       const normalizedFontStyle = getFigmaFontStyle(
         weight,
-        textStyle.$value.fontStyle as FontStyleProps
+        textStyle.fontStyle || "normal"
       );
 
-      fontsToLoad.push({
-        family: textStyle.$value.fontFamily,
-        style: normalizedFontStyle,
-      });
+      if (textStyle.fontFamily) {
+        fontsToLoad.push({
+          family: textStyle.fontFamily,
+          style: normalizedFontStyle,
+        });
+      }
     }
 
     return Promise.all(
@@ -51,90 +46,158 @@ export default function () {
     );
   }
 
-  on<InsertCodeHandler>("INSERT_CODE", async function () {
+  on("INSERT_FILE", async (fontStyleData: FontStyleDataProps) => {
+    // work out what styles we need remap
 
+    const config = fontStyleData.config;
+    const tokens = fontStyleData.tokens;
+    const styles = fontStyleData.styles;
 
+    if (!config || !tokens || !styles) {
+      figma.notify("No config, tokens or styles found in the file");
+      return;
+    }
 
-    await loadAllFonts()
+    // set the config up
+    const scaleSettings = buildTypographyScales({ ...config });
+
+    // get all the available breakpoint sizes for automating stlyes
+    const arrayOfSizes = Object.entries(scaleSettings.typeScale).map((item) => {
+      return {
+        name: item[0],
+        ...item[1],
+      };
+    });
+
+    // parse and remap our tokens into something figma can use
+    const FigmaStyles: FontValueProps[] = [];
+
+    Object.keys(styles).forEach(function (styleName, index) {
+      const values = styles[styleName]?.$value;
+      Object.keys(values).forEach(function (prop) {
+        const token = values[prop as keyof FontValueProps];
+        // is it a reference?
+        if (token && typeof token === "string" && token.match("{") !== null) {
+          const tokenReference = splitTokenReference(token);
+          const tokenValue = findReferenceValue(tokenReference, tokens);
+
+          // mutate data
+          values[prop as keyof FontValueProps] = tokenValue?.$value;
+        } else {
+          // mutate data
+          values[prop] = token;
+        }
+
+        if (prop === "fontScale" && typeof token === "number") {
+          const scale = arrayOfSizes.find((size) => size.step === token);
+          if (scale && scale.sizes) {
+            // values["fontSizes"] = scale.sizes;
+            scale.sizes.forEach((size) => {
+              FigmaStyles.push({
+                name: `${styleName}/${size.$name}`,
+                ...values,
+                fontSize: size.fontSize,
+              });
+            });
+          } else {
+            throw new Error("could not find scale");
+          }
+        }
+      });
+    });
+
+    console.log({ FigmaStyles });
+
+    // load all the fonts
+    await loadAllFonts(FigmaStyles)
       .then((status) => {
         console.log({ status });
 
-        const textStylestoParse = textStyles.styles;
         // loop through
-        for (const property in textStylestoParse) {
+        FigmaStyles.forEach((textStyle, index) => {
           // get the text style values
-          const textStyle = textStyles.styles[property as TextStyleProps];
 
           const failedLoad = status.find(
             (item) =>
-              item.font.family === textStyle.$value.fontFamily &&
+              item.font.family === textStyle.fontFamily &&
               item.status === "failed"
           );
 
           if (failedLoad) {
             figma.notify(
-              `We couldn't load in ${textStyle.$value.fontFamily} on the style ${property}`
+              `We couldn't load in ${textStyle.fontFamily} on the style ${textStyle.name}`
             );
           } else {
             // do the ting
             const exisitingStyles = figma.getLocalTextStyles();
 
             const matchedStyle = exisitingStyles.find(
-              (style) =>
-                style.id ===
-                style.getPluginData(`${textStyles.namespace}-${property}`)
+              (style) => style.id === style.getPluginData(`${textStyle.name}`)
             );
             // if we have a match, lets update it rather than dupe it
             const figmaTextStyle = matchedStyle
               ? matchedStyle
               : figma.createTextStyle();
-            const weight = getWeightName(textStyle.$value.fontWeight);
+            const weight = getWeightName(Number(textStyle.fontWeight));
             const normalizedFontStyle = getFigmaFontStyle(
               weight,
-              textStyle.$value.fontStyle as FontStyleProps
+              textStyle.fontStyle as FontStyleProps
             );
 
             // set the name
-            figmaTextStyle.name = property;
-            figmaTextStyle.fontName = {
-              family: textStyle.$value.fontFamily,
-              style: normalizedFontStyle,
-            };
+            figmaTextStyle.name = textStyle.name || `Untitled-${index}`;
 
-            // set the font size
-            figmaTextStyle.fontSize = textStyle.$value.fontSize;
+            if (textStyle.fontFamily) {
+              figmaTextStyle.fontName = {
+                family: textStyle.fontFamily,
+                style: normalizedFontStyle,
+              };
 
-            // set the line height
-            figmaTextStyle.lineHeight = {
-              unit: "PERCENT",
-              value: convertLineHeight(textStyle.$value.lineHeight),
-            };
+              // set the font size
+              if (textStyle.fontSize) {
+                figmaTextStyle.fontSize = Number(textStyle.fontSize);
+              } else {
+                figma.notify(`No font size found for ${textStyle.name}`);
+              }
 
-            //letterspacing
-            const letterSpacing = converLetterSpacing(
-              textStyle.$value.letterSpacing
-            );
-            figmaTextStyle.letterSpacing = {
-              unit: letterSpacing.unit,
-              value: letterSpacing.value,
-            };
+              // set the line height
 
-            // save the id for later usage
-            if (matchedStyle === undefined) {
-              figmaTextStyle.setPluginData(
-                `${textStyles.namespace}-${property}`,
-                figmaTextStyle.id
-              );
+              if (textStyle.lineHeight) {
+                figmaTextStyle.lineHeight = {
+                  unit: "PERCENT",
+                  value: convertLineHeight(Number(textStyle.lineHeight)),
+                };
+              }
+
+              //letterspacing
+              if (textStyle.letterSpacing) {
+                const letterSpacing = converLetterSpacing(
+                  textStyle.letterSpacing
+                );
+                figmaTextStyle.letterSpacing = {
+                  unit: letterSpacing.unit,
+                  value: letterSpacing.value,
+                };
+              }
+
+              // save the id for later usage
+              if (matchedStyle === undefined) {
+                figmaTextStyle.setPluginData(
+                  `${textStyle.name}`,
+                  figmaTextStyle.id
+                );
+              }
+            } else {
+              figma.notify(`No font family found on ${textStyle.name}`);
             }
           }
-        }
+        });
       })
       .catch((err) => {
         console.log(err);
       });
-
-    figma.closePlugin();
   });
+
   showUI({ width: 320, height: 240 });
 }
 
@@ -144,8 +207,8 @@ export default function () {
  * @param fontStyle
  * @returns
  */
-function getFigmaFontStyle(weight: string, fontStyle: FontStyleProps) {
-  const convertedFontStyle = convertFontStyle(fontStyle);
+function getFigmaFontStyle(weight: string, fontStyle: string = "normal") {
+  const convertedFontStyle = convertFontStyle(fontStyle as FontStyleProps);
   let normalizedFontStyle = weight;
   /*
           IF the typeface is normal and has italicOblique, remove the weight
@@ -192,7 +255,6 @@ export function converLetterSpacing(letterSpacing: string | number) {
   }
   return { unit: unit, value: value };
 }
-
 
 function splitTokenReference(string: string) {
   return string.replace("{", "").replace("}", "").split(".");

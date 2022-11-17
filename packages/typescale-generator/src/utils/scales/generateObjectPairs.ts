@@ -12,6 +12,7 @@ export function generateObjectPairs({ scales }: { scales: TypeScaleProps }) {
   const remap = Object.keys(scales).map((item) => {
  
     return {
+      scale : scales[item].step,
       step: item,
       fontSize: {
         ...scales[item].sizes

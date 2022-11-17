@@ -2,17 +2,17 @@
   "name": "@initiate-ui/figma-generator",
   "version": "0.0.1",
   "dependencies": {
-    "@create-figma-plugin/ui": "^2.1.1",
-    "@create-figma-plugin/utilities": "^2.1.1",
+    "@create-figma-plugin/ui": "^2.1.5",
+    "@create-figma-plugin/utilities": "^2.1.5",
+    "@initiate-ui/typescale-generator": "*",
     "preact": "^10",
     "prismjs": "^1.28.0",
-    "react-simple-code-editor": "^0.11.2",
-    "@initiate-ui/typescale-generator": "*"
+    "react-simple-code-editor": "^0.11.2"
   },
   "devDependencies": {
-    "@create-figma-plugin/build": "^2.1.1",
-    "@create-figma-plugin/tsconfig": "^2.1.1",
-    "@figma/plugin-typings": "1.47.0",
+    "@create-figma-plugin/build": "^2.1.5",
+    "@create-figma-plugin/tsconfig": "^2.1.5",
+    "@figma/plugin-typings": "^1.55.1",
     "@types/prismjs": "^1.26.0",
     "@types/react": "^18.0.21",
     "react": "^18.2.0",
