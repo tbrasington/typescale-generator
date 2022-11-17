@@ -1,5 +1,13 @@
 # @initiate-ui/typescale-cli
 
+## 1.0.1
+
+### Patch Changes
+
+- e3470db: patched in step to object for filtering
+- Updated dependencies [e3470db]
+  - @initiate-ui/typescale-generator@2.0.1
+
 ## 1.0.0
 
 ### Major Changes
