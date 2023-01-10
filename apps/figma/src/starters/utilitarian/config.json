@@ -1,0 +1,138 @@
+{
+  "config": {
+    "range": [-2, -1, 0, 1, 2, 3, 4],
+    "sizes": [
+      {
+        "$name": "BP1",
+        "width": 320,
+        "fontSize": 16,
+        "typeScale": 1.067
+      },
+      {
+        "$name": "BP2",
+        "width": 768,
+        "fontSize": 16,
+        "typeScale": 1.067
+      },
+      {
+        "$name": "BP4",
+        "width": 1440,
+        "fontSize": 20,
+        "typeScale": 1.067
+      }
+    ]
+  },
+  "tokens": {
+    "font": {
+      "family": {
+        "heading": {
+          "$value": "Verdana",
+          "$type": "fontFamily"
+        },
+        "body": {
+          "$value": "Georgia",
+          "$type": "fontFamily"
+        }
+      },
+      "weight": {
+        "heading": {
+          "normal": {
+            "$value": 400,
+            "$type": "fontWeight"
+          },
+          "bold": {
+            "$value": 700,
+            "$type": "fontWeight"
+          }
+        },
+        "body": {
+          "normal": {
+            "$value": 400,
+            "$type": "fontWeight"
+          },
+          "bold": {
+            "$value": 700,
+            "$type": "fontWeight"
+          }
+        }
+      },
+      "lineHeight": {
+        "heading": {
+          "$value": 1.2,
+          "$type": "lineHeight"
+        },
+        "body": {
+          "$value": 1.4,
+          "$type": "lineHeight"
+        }
+      }
+    }
+  },
+
+  "styles": {
+    "Heading 1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.heading}",
+        "fontWeight": "{font.weight.heading.normal}",
+        "letterSpacing": "0px",
+        "lineHeight": "{font.lineHeight.heading}",
+        "fontSize": null,
+        "fontScale": 4
+      }
+    },
+    "Heading 2": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.heading}",
+        "fontWeight": "{font.weight.heading.normal}",
+        "letterSpacing": "0px",
+        "lineHeight": "{font.lineHeight.heading}",
+        "fontSize": null,
+        "fontScale": 3
+      }
+    },
+    "Paragraph Small/Regular": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontWeight": "{font.weight.body.normal}",
+        "letterSpacing": "0px",
+        "lineHeight": "{font.lineHeight.body}",
+        "fontSize": null,
+        "fontScale": -1,
+        "$generative": {
+          "$case": [
+            {
+              "$case": "case",
+              "$value": "uppercase"
+            }
+          ],
+          "$decoration": [
+            {
+              "$type": "decoration",
+              "$value:": "underline",
+              "name": "Links"
+            },
+            {
+              "$type": "decoration",
+              "$value:": "underline",
+              "name": "Links"
+            }
+          ]
+        }
+      }
+    },
+    "Paragraph Small/Emphasis": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontWeight": "{font.weight.body.bold}",
+        "letterSpacing": "0px",
+        "lineHeight": "{font.lineHeight.body}",
+        "fontSize": null,
+        "fontScale": -1
+      }
+    }
+  }
+}
