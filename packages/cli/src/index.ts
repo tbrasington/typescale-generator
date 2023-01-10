@@ -1,13 +1,8 @@
 #!/usr/bin/env node
 import inquirer from "inquirer";
 import kleur from "kleur";
-import { buildTypographyScales } from "./utils/scales";
-import { NamedScalesProps, TypographyScaleValues } from "./utils/interfaces";
-import { generateCSS } from "./utils/scales/generateCSS";
-import { generateObject } from "./utils/scales/generateObject";
-import { generateRange } from "./utils/scales/generateRange";
 import fs from "fs-extra";
-import { generateObjectPairs } from "./utils/scales/generateObjectPairs";
+import { generateObjectPairs , buildTypographyScales, generateRange , generateObject,generateCSS, NamedScales, ViewPortProps, TypographyScaleValues} from "@initiate-ui/typescale-generator";
 
 const Formats = [
   {
@@ -47,10 +42,10 @@ const questions = [
     message: "What type scale do you want to use?",
     choices: Object.keys(TypographyScaleValues).map(
       (key) =>
-        `${TypographyScaleValues[key as NamedScalesProps].name} (${TypographyScaleValues[key as NamedScalesProps].value})`
+        `${TypographyScaleValues[key].name} (${TypographyScaleValues[key].value})`
     ),
     filter(val: string)  {
-      return val.split("(")[0].trim().toUpperCase().replace(" ", "_") as NamedScalesProps;
+      return val.split("(")[0].trim().toUpperCase().replace(" ", "_") ;
     },
   },
   {
@@ -137,24 +132,42 @@ export function cli() {
 
     // assemble the config
     // only add a max if there is one
-    const ScaleConfig = {
-      min: {
+    // const ScaleConfig = {
+    //   min: {
+    //     fontSize: answers.min_fontSize,
+    //     width: answers.min_width,
+    //     typeScale: TypographyScaleValues[answers.type_scale].value,
+    //   },
+    //   max:
+    //     answers.max_fontSize && answers.max_width
+    //       ? {
+    //           fontSize: answers.max_fontSize,
+    //           width: answers.max_width,
+    //           typeScale: TypographyScaleValues[answers.type_scale].value,
+    //         }
+    //       : undefined,
+    // };
+    const ScaleConfig : ViewPortProps[] = []
+    
+    if(answers.min_fontSize && answers.min_width) {
+      ScaleConfig.push({
+        "$name" : "min",
         fontSize: answers.min_fontSize,
         width: answers.min_width,
-        typeScale: TypographyScaleValues[answers.type_scale as NamedScalesProps].value,
-      },
-      max:
-        answers.max_fontSize && answers.max_width
-          ? {
-              fontSize: answers.max_fontSize,
-              width: answers.max_width,
-              typeScale: TypographyScaleValues[answers.type_scale as NamedScalesProps].value,
-            }
-          : undefined,
-    };
+        typeScale: TypographyScaleValues[answers.type_scale].value,
+      })
+    }
+    if(answers.max_fontSize && answers.max_width) {
+      ScaleConfig.push({
+        "$name" : "max",
+        fontSize: answers.max_fontSize,
+        width: answers.max_width,
+        typeScale: TypographyScaleValues[answers.type_scale].value,
+      })
+    }
     // build the scale values out, with their css values, and min / max number values
     const ScaleValues = buildTypographyScales({
-      ...ScaleConfig,
+      sizes:ScaleConfig,
       range: RangeOfSteps,
     }).typeScale;
 

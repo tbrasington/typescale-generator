@@ -16,7 +16,8 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "baseUrl": "./",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "tsBuildInfoFile": ".tsbuildinfo"
   },
   "include": ["src/**/*.ts", "src/tests/**/*.ts"],
   "exclude": ["node_modules", "dist", "src/tests"]

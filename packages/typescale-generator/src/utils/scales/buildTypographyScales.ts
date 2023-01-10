@@ -2,9 +2,7 @@ import { stepValues } from ".";
 import { ViewPortProps, GeneratedNamedScalesProps } from "../interfaces";
 
 /**
- * 
- * @param opts.min the scale to use for generation
- * @param opts.range an array of numbers
+ * @param opts.sizes array of sizes to generate, 
  * @returns A generated set of scales using the specified scale, along with the min max sizes for a breakpoint
  * ```js
  *    {
@@ -43,11 +41,11 @@ import { ViewPortProps, GeneratedNamedScalesProps } from "../interfaces";
   ```
  */
 export function buildTypographyScales(opts: {
+  sizes?: ViewPortProps[];
   range: number[];
-  min: ViewPortProps;
-  max?: ViewPortProps;
+   
 }) {
-  const { min, max, range } = opts;
+  const { range, sizes } = opts;
 
   const system: GeneratedNamedScalesProps = {
     typeScale: {},
@@ -56,14 +54,14 @@ export function buildTypographyScales(opts: {
   const minFluidTypeStep = range[0];
   const maxFluidTypeStep = range[range.length - 1];
   for (let i = minFluidTypeStep; i <= maxFluidTypeStep; i++) {
-   
-    system.typeScale[`step-${i}`] = stepValues({
-      min: min,
-      max: max,
-      step: i,
-    })
-  }
+     if (sizes && sizes.length > 0) {
+      system.typeScale[`step-${i}`] = stepValues({
 
+        sizes: sizes,
+        step: i,
+      });
+    }
+  }
   return {
     ...system,
   };

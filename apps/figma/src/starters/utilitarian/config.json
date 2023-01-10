@@ -92,42 +92,11 @@
         "fontScale": 3
       }
     },
-    "Paragraph Small/Regular": {
+    "Paragraph Small": {
       "$type": "typography",
       "$value": {
         "fontFamily": "{font.family.body}",
         "fontWeight": "{font.weight.body.normal}",
-        "letterSpacing": "0px",
-        "lineHeight": "{font.lineHeight.body}",
-        "fontSize": null,
-        "fontScale": -1,
-        "$generative": {
-          "$case": [
-            {
-              "$case": "case",
-              "$value": "uppercase"
-            }
-          ],
-          "$decoration": [
-            {
-              "$type": "decoration",
-              "$value:": "underline",
-              "name": "Links"
-            },
-            {
-              "$type": "decoration",
-              "$value:": "underline",
-              "name": "Links"
-            }
-          ]
-        }
-      }
-    },
-    "Paragraph Small/Emphasis": {
-      "$type": "typography",
-      "$value": {
-        "fontFamily": "{font.family.body}",
-        "fontWeight": "{font.weight.body.bold}",
         "letterSpacing": "0px",
         "lineHeight": "{font.lineHeight.body}",
         "fontSize": null,

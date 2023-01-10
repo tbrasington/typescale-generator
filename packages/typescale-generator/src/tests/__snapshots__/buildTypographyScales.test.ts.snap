@@ -1,59 +1,103 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Builds the typographic scale 1`] = `
+exports[`using the new range 1`] = `
 Object {
   "typeScale": Object {
     "step--1": Object {
       "clamp": "clamp(0.94rem, 0.94rem + 0vw, 0.94rem)",
-      "max": Object {
-        "fontSize": 15,
-        "typeScale": 1.333,
-        "width": 1440,
-      },
-      "min": Object {
-        "fontSize": 15,
-        "typeScale": 1.067,
-        "width": 320,
-      },
+      "sizes": Array [
+        Object {
+          "$name": "BP1",
+          "fontSize": 15,
+          "typeScale": 1.067,
+          "width": 320,
+        },
+        Object {
+          "$name": "BP2",
+          "fontSize": 13.5,
+          "typeScale": 1.333,
+          "width": 768,
+        },
+        Object {
+          "$name": "BP3",
+          "fontSize": 15,
+          "typeScale": 1.333,
+          "width": 1440,
+        },
+      ],
+      "step": -1,
     },
     "step-0": Object {
       "clamp": "clamp(1rem, 0.93rem + 0.36vw, 1.25rem)",
-      "max": Object {
-        "fontSize": 20,
-        "typeScale": 1.333,
-        "width": 1440,
-      },
-      "min": Object {
-        "fontSize": 16,
-        "typeScale": 1.067,
-        "width": 320,
-      },
+      "sizes": Array [
+        Object {
+          "$name": "BP1",
+          "fontSize": 16,
+          "typeScale": 1.067,
+          "width": 320,
+        },
+        Object {
+          "$name": "BP2",
+          "fontSize": 18,
+          "typeScale": 1.333,
+          "width": 768,
+        },
+        Object {
+          "$name": "BP3",
+          "fontSize": 20,
+          "typeScale": 1.333,
+          "width": 1440,
+        },
+      ],
+      "step": 0,
     },
     "step-1": Object {
       "clamp": "clamp(1.07rem, 0.9rem + 0.86vw, 1.67rem)",
-      "max": Object {
-        "fontSize": 26.66,
-        "typeScale": 1.333,
-        "width": 1440,
-      },
-      "min": Object {
-        "fontSize": 17.07,
-        "typeScale": 1.067,
-        "width": 320,
-      },
+      "sizes": Array [
+        Object {
+          "$name": "BP1",
+          "fontSize": 17.07,
+          "typeScale": 1.067,
+          "width": 320,
+        },
+        Object {
+          "$name": "BP2",
+          "fontSize": 23.99,
+          "typeScale": 1.333,
+          "width": 768,
+        },
+        Object {
+          "$name": "BP3",
+          "fontSize": 26.66,
+          "typeScale": 1.333,
+          "width": 1440,
+        },
+      ],
+      "step": 1,
     },
     "step-2": Object {
       "clamp": "clamp(1.14rem, 0.83rem + 1.55vw, 2.22rem)",
-      "max": Object {
-        "fontSize": 35.54,
-        "typeScale": 1.333,
-        "width": 1440,
-      },
-      "min": Object {
-        "fontSize": 18.22,
-        "typeScale": 1.067,
-        "width": 320,
-      },
+      "sizes": Array [
+        Object {
+          "$name": "BP1",
+          "fontSize": 18.22,
+          "typeScale": 1.067,
+          "width": 320,
+        },
+        Object {
+          "$name": "BP2",
+          "fontSize": 31.98,
+          "typeScale": 1.333,
+          "width": 768,
+        },
+        Object {
+          "$name": "BP3",
+          "fontSize": 35.54,
+          "typeScale": 1.333,
+          "width": 1440,
+        },
+      ],
+      "step": 2,
     },
   },
 }

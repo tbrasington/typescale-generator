@@ -39,30 +39,32 @@ import { numberToRem } from "./numberToRem";
   });
   ```
  */
-export function stepValues({min, max, step}: {
-  min: ViewPortProps;
-  max?: ViewPortProps;
+export function stepValues({ step, sizes}: {
+
+  sizes: ViewPortProps[];
   step: number;
 }) {
+
+  const min = sizes && sizes[0];
     const valueMin = round(
       min.fontSize * Math.pow(min.typeScale, step)
     );
 
-    const valueMax = max ? round(
-      max.fontSize * Math.pow(max.typeScale, step)
+    // array
+    const values = sizes.map((size) => {
+      return {...size, fontSize: round(size.fontSize * Math.pow(size.typeScale, step))};
+    });
+
+
+    const maxLength =  sizes.length -1
+    const max = sizes && maxLength>=1 && sizes[maxLength]
+    const valueMax = max && sizes[maxLength]  ? round(
+      sizes[maxLength].fontSize * Math.pow(sizes[maxLength].typeScale, step)
     ) : undefined;
 
     return {
-      min: {
-        fontSize: valueMin,
-        width: min.width,
-        typeScale: min.typeScale,
-      },
-      max: valueMax && max ? {
-        fontSize: valueMax,
-        width: max.width,
-        typeScale: max.typeScale,
-      } : undefined,
+      step : step,
+      sizes: values,
       clamp: valueMax && max ? clampBuilder(
         min.width,
         max.width,

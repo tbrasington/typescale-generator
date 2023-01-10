@@ -10,14 +10,12 @@ import { GenericKeyValueProps, TypeScaleProps } from "../interfaces";
 export function generateObjectPairs({ scales }: { scales: TypeScaleProps }) {
    
   const remap = Object.keys(scales).map((item) => {
-   const isMaxAvailable = (scales[item].max?.width !== undefined) ? true : false;
-
+ 
     return {
+      scale : scales[item].step,
       step: item,
       fontSize: {
-        [scales[item].min.width]: scales[item].min.fontSize,
-        //@ts-ignore
-        ...(isMaxAvailable && {[scales[item].max?.width] : scales[item].max?.fontSize})
+        ...scales[item].sizes
       },
     };
   });

@@ -1,0 +1,13 @@
+{
+  "heading1": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{font.family.heading}",
+      "fontWeight": "{font.weight.heading.normal}",
+      "letterSpacing": "0px",
+      "lineHeight": "{lineheight.heading}",
+      "fontSize": null,
+      "fontScale": "$step-1"
+    }
+  }
+}
