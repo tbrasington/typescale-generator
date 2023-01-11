@@ -3,7 +3,16 @@ import React, { useRef } from "react";
 import logoPng from "./logo.png";
 import logoSvg from "./logo.svg?raw";
 import Logo from "./Logo";
-
+import { styled } from '@stitches/react';
+const Button = styled('button', {
+  backgroundColor: 'gainsboro',
+  borderRadius: '9999px',
+  fontSize: '13px',
+  padding: '10px 15px',
+  '&:hover': {
+    backgroundColor: 'lightgray',
+  },
+});
 export function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -22,6 +31,7 @@ export function Home() {
   
   return  <main>
       <header>
+        <Button>Button</Button>
         <img src={logoPng} />
         &nbsp;
         <img src={`data:image/svg+xml;utf8,${logoSvg}`} />
