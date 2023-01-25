@@ -1,0 +1,73 @@
+{
+  "typography-scale": {
+    "$type": "scale",
+    "$value": {
+      "min": {
+        "width": "320px",
+        "base": "16px",
+        "ratio": 1.067
+      },
+      "max": {
+        "width": "1728px",
+        "base": "21px",
+        "ratio": 1.414
+      }
+    }
+  },
+  "font": {
+    "family": {
+      "heading": {
+        "$value": "Verdana",
+        "$type": "fontFamily"
+      },
+      "body": {
+        "$value": "Georgia",
+        "$type": "fontFamily"
+      }
+    },
+    "weight": {
+      "heading": {
+        "normal": {
+          "$value": 400,
+          "$type": "fontWeight"
+        },
+        "bold": {
+          "$value": 700,
+          "$type": "fontWeight"
+        }
+      },
+      "body": {
+        "normal": {
+          "$value": 400,
+          "$type": "fontWeight"
+        },
+        "bold": {
+          "$value": 700,
+          "$type": "fontWeight"
+        }
+      }
+    },
+    "lineHeight": {
+      "heading": {
+        "$value": 1.2,
+        "$type": "lineHeight"
+      },
+      "body": {
+        "$value": 1.4,
+        "$type": "lineHeight"
+      }
+    }
+  },
+  "textStyles": {
+    "Heading 1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.heading}",
+        "fontWeight": "{font.weight.heading.normal}",
+        "letterSpacing": "0px",
+        "lineHeight": "{font.lineHeight.heading}",
+        "fontSize": "{{scales.typography-step-4}}"
+      }
+    }
+  }
+}
