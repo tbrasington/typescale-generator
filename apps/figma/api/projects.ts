@@ -5,7 +5,7 @@ export type ProjectProps = {
   description: string;
 };
 
-export async function getProjects(): Promise<ProjectProps[]> {
+export function getProjects(): ProjectProps[] {
   return [
     {
       id: "1",
