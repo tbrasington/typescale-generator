@@ -18,12 +18,21 @@ export const Navigation = styled("nav", {
 });
 
 export const Button = styled("button", {
-  backgroundColor: "gainsboro",
-  borderRadius: "9999px",
-  fontSize: "13px",
-  padding: "10px 15px",
+  backgroundColor: theme.colors.button_default,
+  borderRadius: theme.radii.cta,
+  color: theme.colors.background,
+  border: "none",
+  margin: 0,
+  padding: `${theme.sizes.sm} ${theme.sizes.md}`,
+  fontFamily: theme.fonts.body,
+  lineHeight: 2,
+  fontWeight: theme.fontWeights.cta,
+  letterSpacing: "0.02rem",
   "&:hover": {
-    backgroundColor: "lightgray",
+    backgroundColor: theme.colors.button_default,
+  },
+  "&:active": {
+    backgroundColor: theme.colors.button_active,
   },
 });
 

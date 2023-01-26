@@ -6,7 +6,7 @@ const colors = {
   white: ["#FBFBFB"],
   gray: ["#34363B", "#A3A3A3", "#DFDFDF", "#ECEDF0"],
   purple: ["#6D3FFF"],
-  blue: ["#008FFF"],
+  blue: ["#008FFF", "#0066e8"],
 };
 export const {
   styled,
@@ -29,6 +29,8 @@ export const {
       background: colors.white[0],
       background_highlight: colors.gray[3],
       background_dimmed: colors.black[1],
+      button_default: colors.blue[0],
+      button_active: colors.blue[1],
     },
     fonts: {
       body: "Inter, sans-serif",
@@ -40,7 +42,7 @@ export const {
     },
     fontWeights: {
       body: 500,
-      cta: 700,
+      cta: 500,
     },
     lineHeights: {
       body: "1.5",
@@ -55,6 +57,9 @@ export const {
       lg: "24px",
       xl: "32px",
       xxl: "48px",
+    },
+    radii: {
+      cta: "8px",
     },
   },
   media: {

@@ -16,7 +16,7 @@ export function Home({}) {
   return (
     <Main>
       <ToolBar>
-        <Text>Projects</Text>
+        <Text color="highlight">Projects</Text>
         <Button>New Project</Button>
       </ToolBar>
       <div>

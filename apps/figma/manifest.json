@@ -1,8 +1,8 @@
 {
   "api": "1.0.0",
   "editorType": ["figma"],
-  "id": "typescale-geenerator",
-  "name": "Typescale Generator",
+  "id": "@initiate-ui/figma-generate-text-styles",
+  "name": "initiate-ui - Typescale Generator",
   "main": "dist/code.js",
   "ui": "dist/index.html"
 }

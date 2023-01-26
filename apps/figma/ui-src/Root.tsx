@@ -9,7 +9,7 @@ function Root() {
       {/* A "layout route" is a good place to put markup you want to
           share across all the pages on your site, like navigation. */}
       <styles.Navigation>
-        <Text color="highlight">initiate.app</Text>
+        <Text color="base">initiate.app</Text>
       </styles.Navigation>
 
       {/* An <Outlet> renders whatever child route is currently active,
