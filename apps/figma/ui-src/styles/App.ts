@@ -1,0 +1,45 @@
+import { globalCss } from "@stitches/react";
+import { styled, theme } from "./stitches.config";
+globalCss({
+  "*": {
+    boxSizing: "border-box",
+  },
+  body: {
+    margin: 0,
+    padding: 0,
+  },
+})();
+
+export const Navigation = styled("nav", {
+  display: "flex",
+  borderBottom: "1px solid",
+  borderColor: theme.colors.dividers,
+  padding: theme.sizes.md,
+});
+
+export const Button = styled("button", {
+  backgroundColor: "gainsboro",
+  borderRadius: "9999px",
+  fontSize: "13px",
+  padding: "10px 15px",
+  "&:hover": {
+    backgroundColor: "lightgray",
+  },
+});
+
+export const Main = styled("main", {
+  display: "flex",
+  flexDirection: "column",
+  height: "100%",
+  width: "100%",
+  padding: theme.sizes.md,
+});
+
+export const ToolBar = styled("div", {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: theme.sizes.md,
+  width: "100%",
+  minHeight: theme.sizes.xl,
+});

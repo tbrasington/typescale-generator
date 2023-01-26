@@ -1,53 +1,33 @@
-import React, { useRef } from "react";
+import React from "react";
 
-import logoPng from "./logo.png";
-import logoSvg from "./logo.svg?raw";
-import Logo from "./Logo";
-import { styled } from '@stitches/react';
-const Button = styled('button', {
-  backgroundColor: 'gainsboro',
-  borderRadius: '9999px',
-  fontSize: '13px',
-  padding: '10px 15px',
-  '&:hover': {
-    backgroundColor: 'lightgray',
-  },
-});
-export function Home() {
-  const inputRef = useRef<HTMLInputElement>(null);
+import { Button, Main, ToolBar } from "./styles/App";
+import Text from "./styles/Text";
+import { getProjects, ProjectProps } from "../api/projects";
+import { useLoaderData, json } from "react-router-dom";
 
-  const onCreate = () => {
-    const count = Number(inputRef.current?.value || 0);
-    parent.postMessage(
-      { pluginMessage: { type: "create-rectangles", count } },
-      "*"
-    );
-  };
+export async function loader() {
+  const projects = await getProjects();
+  return json({ projects });
+}
 
-  const onCancel = () => {
-    parent.postMessage({ pluginMessage: { type: "cancel" } }, "*");
-  };
+export function Home({}) {
+  const { projects } = useLoaderData() as { projects: ProjectProps[] };
 
-  
-  return  <main>
-      <header>
-        <Button>Button</Button>
-        <img src={logoPng} />
-        &nbsp;
-        <img src={`data:image/svg+xml;utf8,${logoSvg}`} />
-        &nbsp;
-        <Logo />
-        <h2>Rectangle Creator</h2>
-      </header>
-      <section>
-        <input id="input" type="number" min="0" ref={inputRef} />
-        <label htmlFor="input">Rectangle Count</label>
-      </section>
-      <footer>
-        <button className="brand" onClick={onCreate}>
-          Create
-        </button>
-        <button onClick={onCancel}>Cancel</button>
-      </footer>
-    </main>
+  return (
+    <Main>
+      <ToolBar>
+        <Text>Projects</Text>
+        <Button>New Project</Button>
+      </ToolBar>
+      <div>
+        {projects && projects.length > 0 ? (
+          projects.map((item) => {
+            return item.name;
+          })
+        ) : (
+          <Text>No projects found</Text>
+        )}
+      </div>
+    </Main>
+  );
 }
