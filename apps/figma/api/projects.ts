@@ -5,19 +5,25 @@ export type ProjectProps = {
   description: string;
 };
 
+const projectData = [
+  {
+    id: "1",
+    name: "tbrasington.com",
+    description: "Project 1 description",
+    style_count: 10,
+  },
+  {
+    id: "2",
+    name: "thepostchaise.com",
+    description: "Project 1 description",
+    style_count: 10,
+  },
+];
+
 export function getProjects(): ProjectProps[] {
-  return [
-    {
-      id: "1",
-      name: "tbrasington.com",
-      description: "Project 1 description",
-      style_count: 10,
-    },
-    {
-      id: "2",
-      name: "thepostchaise.com",
-      description: "Project 1 description",
-      style_count: 10,
-    },
-  ];
+  return projectData;
+}
+
+export function getProject(id: string) {
+  return projectData.find((project) => project.id === id);
 }

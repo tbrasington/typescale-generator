@@ -8,6 +8,7 @@ import {
   RouterProvider,
   Routes,
 } from "react-router-dom";
+import { getProjects } from "../api/projects";
 import { Home } from "./Home";
 import { Projects } from "./Projects";
 import Root from "./Root";
@@ -31,7 +32,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <MemoryRouter>
       <Routes>
-        <Route path="/" element={<Root />}>
+        <Route path="/" element={<Root />} id="root">
           <Route index element={<Home />} />
           <Route path="project/:projectId" element={<Projects />} />
         </Route>
