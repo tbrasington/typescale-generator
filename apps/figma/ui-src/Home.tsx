@@ -18,9 +18,9 @@ export function Home({}) {
         {projects && projects.length > 0 ? (
           projects.map((item) => {
             return (
-              <p key={item.id}>
+              <Text key={item.id}>
                 <Link to={`project/${item.id}`}>{item.name}</Link>
-              </p>
+              </Text>
             );
           })
         ) : (
