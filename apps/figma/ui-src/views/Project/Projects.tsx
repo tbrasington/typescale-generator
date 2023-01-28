@@ -22,7 +22,7 @@ export function Projects() {
       <styles.container>
         <styles.list>
           <styles.item>
-            <span>A quick dog jumps over a lazy fox</span>
+            <span>A quick dog jumps over a lazy foxes</span>
           </styles.item>
         </styles.list>
       </styles.container>

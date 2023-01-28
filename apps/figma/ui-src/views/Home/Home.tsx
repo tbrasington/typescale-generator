@@ -2,12 +2,26 @@ import React from "react";
 
 import { Button, Main, ToolBar } from "../../styles/App";
 import Text from "../../styles/Text";
-import { getProjects } from "../../../api/projects";
-import { Link } from "react-router-dom";
+import { getProjects, getProjects2, ProjectProps } from "../../../api/projects";
+import {
+  json,
+  Link,
+  useLoaderData,
+  useRouteLoaderData,
+} from "react-router-dom";
 import * as styles from "./Home.styles";
-export function Home({}) {
-  const projects = getProjects();
 
+export async function loader() {
+  const projects = await getProjects2();
+  return json({ projects });
+}
+
+export function Home({}) {
+  //const projects = getProjects();
+  const { projects } = useRouteLoaderData("root") as {
+    projects: ProjectProps[];
+  };
+  //console.log({ projects2 });
   return (
     <Main>
       <ToolBar>
@@ -22,6 +36,7 @@ export function Home({}) {
                 <Text weight="body" color="base" underlineLinks={false}>
                   <Link to={`project/${item.id}`}>{item.name}</Link>
                 </Text>
+                <Text>{item.style_count}</Text>
               </styles.item>
             );
           })

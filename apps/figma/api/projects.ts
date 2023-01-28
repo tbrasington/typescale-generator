@@ -104,3 +104,7 @@ export function getProjects(): ProjectProps[] {
 export function getProject(id: string) {
   return projectData.find((project) => project.id === id);
 }
+
+export async function getProjects2(): Promise<ProjectProps[]> {
+  return projectData;
+}
