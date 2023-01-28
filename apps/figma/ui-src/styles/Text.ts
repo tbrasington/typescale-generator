@@ -3,7 +3,22 @@ export const Text = styled("span", {
   margin: 0,
   padding: 0,
   fontFamily: theme.fonts.body,
+  "& a": {
+    color: "inherit",
+  },
   variants: {
+    underlineLinks: {
+      true: {
+        "& a": {
+          textDecoration: "underline",
+        },
+      },
+      false: {
+        "& a": {
+          textDecoration: "none",
+        },
+      },
+    },
     color: {
       base: {
         color: theme.colors.text,
@@ -55,6 +70,7 @@ export const Text = styled("span", {
     size: "main",
     weight: "body",
     lineHeight: "label",
+    underlineLinks: true,
   },
 });
 

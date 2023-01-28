@@ -1,16 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  createMemoryRouter,
-  MemoryRouter,
-  Route,
-  RouterProvider,
-  Routes,
-} from "react-router-dom";
-import { getProjects } from "../api/projects";
-import { Home } from "./Home";
-import { Projects } from "./Projects";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./views/Home/Home";
+import { Projects } from "./views/Project/Projects";
 import Root from "./Root";
 
 // const router = createMemoryRouter([

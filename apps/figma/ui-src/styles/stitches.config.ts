@@ -60,6 +60,17 @@ export const {
     },
     radii: {
       cta: "8px",
+      card: "8px",
+    },
+    space: {
+      none: "0px",
+      xxs: "2px",
+      xs: "4px",
+      sm: "8px",
+      md: "16px",
+      lg: "24px",
+      xl: "32px",
+      xxl: "48px",
     },
   },
   media: {
