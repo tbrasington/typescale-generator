@@ -3,11 +3,60 @@ export type ProjectProps = {
   style_count: number;
   name: string;
   description: string;
-  tokens: unknown;
+  tokens: TokensProps;
 };
 
-const data = {
-  "typography-scale": {
+export interface FontValueProps {
+  name?: string;
+  fontFamily?: string;
+  fontWeight?: string | number;
+  letterSpacing?: string | number;
+  lineHeight?: string | number;
+  fontSize?: number | string | null;
+  fontStyle?: string;
+}
+
+export interface TokensProps {
+  font: Font;
+  textStyles: {
+    [key: string]: {
+      $type: string;
+      $value: FontValueProps;
+    };
+  };
+  typographyScale: {
+    $type: string;
+    $value: {
+      min: {
+        width: string;
+        base: string;
+        ratio: number;
+      };
+      max: {
+        width: string;
+        base: string;
+        ratio: number;
+      };
+    };
+  };
+}
+export interface Font {
+  family?: TokenProps;
+  weight?: TokenProps;
+  lineHeight?: TokenProps;
+}
+
+export interface TokenProps {
+  [key: string]: TokenValueProps | TokenProps;
+}
+
+type TokenValueProps = {
+  $value: string | number;
+  $type: string;
+};
+
+export const data: TokensProps = {
+  typographyScale: {
     $type: "scale",
     $value: {
       min: {
@@ -77,10 +126,20 @@ const data = {
         fontSize: "{{scales.typography-step-4}}",
       },
     },
+    Paragraph: {
+      $type: "typography",
+      $value: {
+        fontFamily: "{font.family.body}",
+        fontWeight: "{font.weight.body.normal}",
+        letterSpacing: "0px",
+        lineHeight: "{font.lineHeight.body}",
+        fontSize: "{{scales.typography-step-0}}",
+      },
+    },
   },
 };
 
-const projectData = [
+export const projectData: ProjectProps[] = [
   {
     id: "1",
     name: "tbrasington.com",

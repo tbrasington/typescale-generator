@@ -1,18 +1,24 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-
-import { Projects as Component } from "./index";
+import { projectData } from "../../../api/projects";
+import { View, NotFound } from "./index";
 
 export default {
   title: "Projects",
-  component: Component,
-} as Meta<typeof Component>;
+  component: View,
+} as Meta<typeof View>;
 
-type Story = StoryObj<typeof Component>;
+type Story = StoryObj<typeof View>;
 
 export const Projects: Story = {
-  args: {},
+  args: { project: projectData[0] },
   render(args) {
-    return <Component></Component>;
+    return <View {...args} />;
+  },
+};
+
+export const NotFoundProject: Story = {
+  render() {
+    return <NotFound />;
   },
 };
