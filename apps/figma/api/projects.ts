@@ -55,6 +55,7 @@ type TokenValueProps = {
   $type: string;
 };
 
+// stub state
 export const data: TokensProps = {
   typographyScale: {
     $type: "scale",
