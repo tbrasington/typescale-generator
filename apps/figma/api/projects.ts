@@ -16,14 +16,16 @@ export interface FontValueProps {
   fontStyle?: string;
 }
 
+export type TextStylesProps = {
+  [key: string]: {
+    $type: string;
+    $value: FontValueProps;
+  };
+};
+
 export interface TokensProps {
   font: Font;
-  textStyles: {
-    [key: string]: {
-      $type: string;
-      $value: FontValueProps;
-    };
-  };
+  textStyles: TextStylesProps;
   typographyScale: {
     $type: string;
     $value: {

@@ -4,7 +4,7 @@ import { getProject, ProjectProps } from "../../../api/projects";
 import { Button, Main, ToolBar } from "../../styles/App";
 import Text from "../../styles/Text";
 import * as styles from "./Project.styles";
-
+import { parseTokens } from "../../../parsers";
 export function Projects() {
   let params = useParams();
   const { projectId } = params;
@@ -17,6 +17,11 @@ export function Projects() {
 }
 
 export function View({ project }: { project: ProjectProps }) {
+  const typeData = parseTokens({
+    styles: project.tokens.textStyles,
+    tokens: project.tokens,
+  });
+  console.log({ typeData });
   return (
     <Main>
       <ToolBar>
