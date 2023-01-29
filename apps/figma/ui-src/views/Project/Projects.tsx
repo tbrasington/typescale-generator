@@ -43,10 +43,26 @@ export function View({ project }: { project: ProjectProps }) {
                 >
                   A quick dog jumps over a lazy foxes
                 </span>
-                <styles.itemLabelValue>
-                  <Text size="minor">Font Family</Text>
-                  <Text color="link">{item.fontFamily}</Text>
-                </styles.itemLabelValue>
+                <styles.fontSettings>
+                  <styles.itemLabelValue>
+                    <Text size="label">Font Family</Text>
+                    <Text color="link" size="minor">
+                      {item.fontFamily}
+                    </Text>
+                  </styles.itemLabelValue>
+                  <styles.itemLabelValue>
+                    <Text size="label">Font Style</Text>
+                    <Text color="link" size="minor">
+                      {item.fontStyle}
+                    </Text>
+                  </styles.itemLabelValue>
+                  <styles.itemLabelValue>
+                    <Text size="label">Weight</Text>
+                    <Text color="link" size="minor">
+                      {item.fontWeight}
+                    </Text>
+                  </styles.itemLabelValue>
+                </styles.fontSettings>
               </styles.item>
             );
           })}

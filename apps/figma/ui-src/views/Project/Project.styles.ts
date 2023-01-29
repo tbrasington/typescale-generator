@@ -28,6 +28,12 @@ export const item = styled("li", {
   gap: theme.space.lg,
 });
 
+export const fontSettings = styled("div", {
+  display: "flex",
+  flexDirection: "row",
+  gap: theme.space.lg,
+});
+
 export const itemLabelValue = styled("div", {
   display: "flex",
   flexDirection: "column",
