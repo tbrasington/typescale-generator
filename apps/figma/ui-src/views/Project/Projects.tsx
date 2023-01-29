@@ -30,9 +30,26 @@ export function View({ project }: { project: ProjectProps }) {
       </ToolBar>
       <styles.container>
         <styles.list>
-          <styles.item>
-            <span>A quick dog jumps over a lazy foxes</span>
-          </styles.item>
+          {typeData.map((item) => {
+            return (
+              <styles.item key={item.name}>
+                <span
+                  style={{
+                    fontFamily: `${item.fontFamily}`,
+                    fontWeight: `${item.fontWeight}`,
+                    fontStyle: `${item.fontStyle}`,
+                    fontSize: 24,
+                  }}
+                >
+                  A quick dog jumps over a lazy foxes
+                </span>
+                <styles.itemLabelValue>
+                  <Text size="minor">Font Family</Text>
+                  <Text color="link">{item.fontFamily}</Text>
+                </styles.itemLabelValue>
+              </styles.item>
+            );
+          })}
         </styles.list>
       </styles.container>
     </Main>

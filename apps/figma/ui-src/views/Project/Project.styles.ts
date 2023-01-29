@@ -23,5 +23,13 @@ export const list = styled("ul", {
 
 export const item = styled("li", {
   display: "flex",
+  flexDirection: "column",
   padding: `${theme.space.lg} 0`,
+  gap: theme.space.lg,
+});
+
+export const itemLabelValue = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.space.none,
 });

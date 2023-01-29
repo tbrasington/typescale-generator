@@ -77,7 +77,7 @@ export const data: TokensProps = {
   font: {
     family: {
       heading: {
-        $value: "Suisse Int'l Trial",
+        $value: "SuisseIntlTrial",
         $type: "fontFamily",
       },
       body: {
@@ -126,7 +126,7 @@ export const data: TokensProps = {
         fontWeight: "{font.weight.heading.normal}",
         letterSpacing: "0px",
         lineHeight: "{font.lineHeight.heading}",
-        fontSize: "{{scales.typography-step-4}}",
+        fontSize: "{scales.typography-step-4}",
       },
     },
     Paragraph: {
@@ -136,7 +136,7 @@ export const data: TokensProps = {
         fontWeight: "{font.weight.body.normal}",
         letterSpacing: "0px",
         lineHeight: "{font.lineHeight.body}",
-        fontSize: "{{scales.typography-step-0}}",
+        fontSize: "{scales.typography-step-0}",
       },
     },
   },
