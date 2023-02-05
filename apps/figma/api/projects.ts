@@ -14,12 +14,16 @@ export interface FontValueProps {
   lineHeight?: string | number;
   fontSize?: number | string | null;
   fontStyle?: string;
+  textDecoration?: string;
+  textTransform?: string;
 }
 
 export type TextStylesProps = {
   [key: string]: {
+    [x: string]: any;
     $type: string;
     $value: FontValueProps;
+    $permutations?: PermutationProps[];
   };
 };
 
@@ -48,6 +52,12 @@ export interface Font {
   lineHeight?: TokenProps;
 }
 
+export interface PermutationProps {
+  $name: string;
+  $type: string;
+  $value: TokenValueProps[];
+  $permutations?: PermutationProps;
+}
 export interface TokenProps {
   [key: string]: TokenValueProps | TokenProps;
 }
@@ -55,6 +65,65 @@ export interface TokenProps {
 type TokenValueProps = {
   $value: string | number;
   $type: string;
+};
+
+const permutationsForBodyFontWeight = {
+  $name: "Weight",
+  $type: "permutation",
+  $value: [
+    {
+      $name: "Normal",
+      $type: "fontWeight",
+      $value: "{font.weight.body.normal}",
+    },
+    {
+      $name: "Bold",
+      $type: "fontWeight",
+      $value: "{font.weight.body.bold}",
+    },
+  ],
+};
+const permutationsForBodyFontSize = {
+  $name: "Sizes",
+  $type: "permutation",
+  $value: [
+    {
+      $name: "Large",
+      $type: "fontSize",
+      $value: "{scales.typography-step-1}",
+    },
+    {
+      $name: "Base",
+      $type: "fontSize",
+      $value: "{scales.typography-step-0}",
+    },
+    {
+      $name: "Small",
+      $type: "fontSize",
+      $value: "{scales.typography-step--1}",
+    },
+  ],
+};
+const permutationsForBodyDecorations = {
+  $name: "Decorations",
+  $type: "permutation",
+  $value: [
+    {
+      $name: "None",
+      $type: "decoration",
+      $value: "none",
+    },
+    {
+      $name: "Underline",
+      $type: "decoration",
+      $value: "underline",
+    },
+    {
+      $name: "Strikethrought",
+      $type: "decoration",
+      $value: "line-through",
+    },
+  ],
 };
 
 // stub state
@@ -140,6 +209,11 @@ export const data: TokensProps = {
         lineHeight: "{font.lineHeight.body}",
         fontSize: "{scales.typography-step-0}",
       },
+      $permutations: [
+        permutationsForBodyFontSize,
+        permutationsForBodyFontWeight,
+        permutationsForBodyDecorations,
+      ],
     },
   },
 };

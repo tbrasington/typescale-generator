@@ -21,7 +21,7 @@ export function View({ project }: { project: ProjectProps }) {
     styles: project.tokens.textStyles,
     tokens: project.tokens,
   });
-  console.log({ typeData });
+
   return (
     <Main>
       <ToolBar>
