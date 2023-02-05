@@ -26,9 +26,15 @@ export function parseValuesToTakens(
     if (token && typeof token === "string" && token.match("{") !== null) {
       const tokenReference = splitTokenReference(token);
       const tokenValue = findReferenceValue(tokenReference, tokens);
+      //if its a type scale, do some math
+      if (prop === "fontSize") {
+        console.log({ prop });
 
-      // mutate data
-      values[prop as keyof FontValueProps] = tokenValue?.$value;
+        values[prop as keyof FontValueProps] = 100;
+      } else {
+        // mutate data
+        values[prop as keyof FontValueProps] = tokenValue?.$value;
+      }
     } else {
       // mutate data
       if (token) values[prop] = token;
@@ -76,7 +82,13 @@ export function parseTokens({
         //const values = parseValuesToTakens(item.$value, tokens);
 
         const name = item.map((i) => i.$name).join("/");
-        console.log(name);
+        const values = item.map((i) => {
+          // this code needs to merge the base styles with the permutations
+          // replacing the values in the permutation
+          const parseTokens = parseValuesToTakens(i, tokens);
+          return { ...parseTokens };
+        });
+        console.log({ name, values });
       });
     }
 
