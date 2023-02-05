@@ -44,7 +44,7 @@ const flatten = (
   result: TokenValueProps[] = []
 ) => {
   if (arr && !arr.length) {
-    result.push(current);
+    result.push(current as unknown as TokenValueProps);
     return;
   }
   if (arr) {
