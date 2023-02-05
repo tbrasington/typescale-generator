@@ -7,12 +7,13 @@ export type ProjectProps = {
 };
 
 export interface FontValueProps {
+  [key: string]: string | number | undefined;
   name?: string;
   fontFamily?: string;
   fontWeight?: string | number;
   letterSpacing?: string | number;
   lineHeight?: string | number;
-  fontSize?: number | string | null;
+  fontSize?: number | string;
   fontStyle?: string;
   textDecoration?: string;
   textTransform?: string;
@@ -53,16 +54,16 @@ export interface Font {
 }
 
 export interface PermutationProps {
-  $name: string;
+  $name?: string;
   $type: string;
   $value: TokenValueProps[];
-  $permutations?: PermutationProps;
 }
 export interface TokenProps {
   [key: string]: TokenValueProps | TokenProps;
 }
 
-type TokenValueProps = {
+export type TokenValueProps = {
+  $name?: string;
   $value: string | number;
   $type: string;
 };
@@ -119,7 +120,7 @@ const permutationsForBodyDecorations = {
       $value: "underline",
     },
     {
-      $name: "Strikethrought",
+      $name: "Strikethrough",
       $type: "decoration",
       $value: "line-through",
     },
