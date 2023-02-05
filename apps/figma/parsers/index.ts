@@ -85,6 +85,10 @@ export function parseTokens({
         const values = item.map((i) => {
           // this code needs to merge the base styles with the permutations
           // replacing the values in the permutation
+          // look at the $type to do the merge
+          // then the parseValuesToTokens scale can do the look up just there
+          // rather than two places
+          console.log({ i });
           const parseTokens = parseValuesToTakens(i, tokens);
           return { ...parseTokens };
         });
