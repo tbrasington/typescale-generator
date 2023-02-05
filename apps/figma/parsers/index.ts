@@ -41,17 +41,18 @@ export function parseValuesToTakens(
 const flatten = (
   arr?: PermutationProps[],
   current: TokenValueProps[] = [],
-  result: TokenValueProps[] = []
+  result: Array<TokenValueProps[]> = []
 ) => {
   if (arr && !arr.length) {
-    result.push(current as unknown as TokenValueProps);
+    result.push(current);
+
     return;
   }
   if (arr) {
     for (const item of arr[0].$value) {
       flatten(arr.slice(1), [...current, item], result);
     }
-    return result as TokenValueProps[];
+    return result;
   }
   return result;
 };
@@ -71,7 +72,12 @@ export function parseTokens({
 
     if (styles[styleName].$permutations) {
       combinations = flatten(styles[styleName].$permutations, [], []);
-      console.log({ combinations });
+      combinations?.map((item) => {
+        //const values = parseValuesToTakens(item.$value, tokens);
+
+        const name = item.map((i) => i.$name).join("/");
+        console.log(name);
+      });
     }
 
     // make the style
