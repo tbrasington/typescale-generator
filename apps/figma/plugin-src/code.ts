@@ -86,6 +86,11 @@ figma.ui.onmessage = async (msg) => {
                 };
               }
 
+              if (textStyle.textDecoration) {
+                figmaTextStyle.textDecoration =
+                  textStyle.textDecoration.toUpperCase() as TextDecoration;
+              }
+
               // save the id for later usage
               if (matchedStyle === undefined) {
                 figmaTextStyle.setPluginData(

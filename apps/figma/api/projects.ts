@@ -118,7 +118,7 @@ const permutationsForBodyDecorations = {
     {
       $name: "Strikethrough",
       $type: "textDecoration",
-      $value: "line-through",
+      $value: "strikethrough",
     },
   ],
 };
@@ -145,7 +145,7 @@ export const data: TokensProps = {
   font: {
     family: {
       heading: {
-        $value: "SuisseIntlTrial",
+        $value: "Suisse Int'l Trial",
         $type: "fontFamily",
       },
       body: {
@@ -197,6 +197,10 @@ export const data: TokensProps = {
         lineHeight: "{font.lineHeight.heading}",
         fontSize: "{scales.step-4}",
       },
+      $permutations: [
+        permutationsForBodyFontSize,
+        permutationsForBodyDecorations,
+      ],
     },
     Paragraph: {
       $type: "typography",
