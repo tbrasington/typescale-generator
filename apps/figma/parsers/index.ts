@@ -5,21 +5,29 @@ import {
   PermutationProps,
   TokenValueProps,
 } from "../api/projects";
+import { stepValues } from "@initiate-ui/typescale-generator";
 
 export function splitTokenReference(string: string) {
   return string.replace("{", "").replace("}", "").split(".");
 }
 
+// finds the value of token from the entire tokens object e.g. font.body.bold = 700
 export function findReferenceValue(string: string[], tokens: object) {
   return string.reduce((o: any, i) => o?.[i], tokens);
 }
 
-export function parseValuesToTakens(
+export function parseValuesToTokens(
   _values: FontValueProps,
-  tokens: TokensProps
+  tokens: TokensProps,
+  /*
+   * @param {string} breakpoint - The breakpoint to use for the font size scale if present
+   */
+  breakpoint?: string
 ) {
   let values = _values;
 
+  // do we have a scale token present?
+  const scaleConfig = tokens.typographyScale.$value;
   Object.keys(values).forEach(function (prop) {
     const token = values[prop as keyof FontValueProps];
     // is it a reference?
@@ -28,9 +36,19 @@ export function parseValuesToTakens(
       const tokenValue = findReferenceValue(tokenReference, tokens);
       //if its a type scale, do some math
       if (prop === "fontSize") {
-        console.log({ prop });
+        // need to do checks to see if its a number, scale, or percentage
+        const step = Number(tokenReference[1].replace("step-", ""));
+        const steps = stepValues({
+          sizes: scaleConfig,
+          step: step,
+        });
 
-        values[prop as keyof FontValueProps] = 100;
+        // find the size, and if not fall back to the first element
+        const breakpointSize =
+          steps.sizes.find((item) => item.$name === breakpoint) ||
+          steps.sizes[0];
+
+        values[prop as keyof FontValueProps] = breakpointSize?.fontSize;
       } else {
         // mutate data
         values[prop as keyof FontValueProps] = tokenValue?.$value;
@@ -70,68 +88,66 @@ export function parseTokens({
   styles: TextStylesProps;
   tokens: TokensProps;
 }) {
+  // setup the array for figma
   const FigmaStyles: FontValueProps[] = [];
 
   Object.keys(styles).forEach(function (styleName, index) {
+    // now lets make the permutations
     // how many different styles do we need
     let combinations;
 
     if (styles[styleName].$permutations) {
       combinations = flatten(styles[styleName].$permutations, [], []);
-      combinations?.map((item) => {
-        //const values = parseValuesToTakens(item.$value, tokens);
-
+      const styleList = combinations?.map((item) => {
         const name = item.map((i) => i.$name).join("/");
-        const values = item.map((i) => {
-          // this code needs to merge the base styles with the permutations
-          // replacing the values in the permutation
-          // look at the $type to do the merge
-          // then the parseValuesToTokens scale can do the look up just there
-          // rather than two places
-          console.log({ i });
-          const parseTokens = parseValuesToTakens(i, tokens);
-          return { ...parseTokens };
+
+        // convert into a key=>value object
+        const baseValue = item.map((i: TokenValueProps) => {
+          return { [i.$type]: i.$value };
         });
-        console.log({ name, values });
+        return { name, values: baseValue };
       });
+
+      styleList?.forEach((style) => {
+        const merged = Object.assign(
+          {},
+          styles[styleName]?.$value,
+          ...style.values
+        );
+
+        // do we have multiple scales/breakpoints to render?
+        const numberOfBreakpoints = tokens.typographyScale.$value.length;
+
+        // if so loop
+        if (numberOfBreakpoints > 1) {
+          tokens.typographyScale.$value.forEach((breakpoint) => {
+            const parse = parseValuesToTokens(merged, tokens, breakpoint.$name);
+            FigmaStyles.push({
+              name: `${styleName}/${style.name}/${breakpoint.$name}`,
+              ...parse,
+            });
+          });
+        } else {
+          const parse = parseValuesToTokens(merged, tokens);
+          // else just make the one style
+          FigmaStyles.push({
+            name: `${styleName}/${style.name}`,
+            ...parse,
+          });
+        }
+      });
+    } else {
+      // only one combo
+      // make the style if no combinations present
+      const values = parseValuesToTokens(styles[styleName]?.$value, tokens);
+
+      // and now add to figma
+      FigmaStyles.push({
+        name: `${styleName}`,
+        ...values,
+      });
+      return FigmaStyles;
     }
-
-    // make the style
-    const values = parseValuesToTakens(styles[styleName]?.$value, tokens);
-    // Object.keys(values).forEach(function (prop) {
-    //   const token = values[prop as keyof FontValueProps];
-    //   // is it a reference?
-    //   if (token && typeof token === "string" && token.match("{") !== null) {
-    //     const tokenReference = splitTokenReference(token);
-    //     const tokenValue = findReferenceValue(tokenReference, tokens);
-
-    //     // mutate data
-    //     values[prop as keyof FontValueProps] = tokenValue?.$value;
-    //   } else {
-    //     // mutate data
-    //     values[prop] = token;
-    //   }
-    // });
-    FigmaStyles.push({
-      name: `${styleName}`,
-      ...values,
-    });
   });
   return FigmaStyles;
 }
-
-// if (prop === "fontScale" && typeof token === "number") {
-//   const scale = arrayOfSizes.find((size) => size.step === token);
-//   if (scale && scale.sizes) {
-//     // values["fontSizes"] = scale.sizes;
-//     scale.sizes.forEach((size) => {
-//       FigmaStyles.push({
-//         name: `${styleName}/${size.$name}`,
-//         ...values,
-//         fontSize: size.fontSize,
-//       });
-//     });
-//   } else {
-//     throw new Error("could not find scale");
-//   }
-// }

@@ -1,22 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  createMemoryRouter,
-  MemoryRouter,
-  Route,
-  RouterProvider,
-  Routes,
-} from "react-router-dom";
+import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { Home, loader as projectsLoader } from "./views/Home/Home";
 import { Projects } from "./views/Project/Projects";
 import Root from "./Root";
-import { data } from "../api/projects";
-import { parseTokens } from "../parsers";
-
-const typeData = parseTokens({
-  styles: data.textStyles,
-  tokens: data,
-});
 
 //console.log({ typeData });
 

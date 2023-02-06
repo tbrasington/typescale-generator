@@ -1,3 +1,5 @@
+import { ViewPortProps } from "@initiate-ui/typescale-generator";
+
 export type ProjectProps = {
   id: string;
   style_count: number;
@@ -28,23 +30,17 @@ export type TextStylesProps = {
   };
 };
 
+export interface TypographyScaleProps {
+  width: string;
+  base: string;
+  ratio: number;
+}
 export interface TokensProps {
   font: Font;
   textStyles: TextStylesProps;
   typographyScale: {
     $type: string;
-    $value: {
-      min: {
-        width: string;
-        base: string;
-        ratio: number;
-      };
-      max: {
-        width: string;
-        base: string;
-        ratio: number;
-      };
-    };
+    $value: ViewPortProps[];
   };
 }
 export interface Font {
@@ -91,17 +87,17 @@ const permutationsForBodyFontSize = {
     {
       $name: "Large",
       $type: "fontSize",
-      $value: "{scales.typography-step-1}",
+      $value: "{scales.step-1}",
     },
     {
       $name: "Base",
       $type: "fontSize",
-      $value: "{scales.typography-step-0}",
+      $value: "{scales.step-0}",
     },
     {
       $name: "Small",
       $type: "fontSize",
-      $value: "{scales.typography-step--1}",
+      $value: "{scales.step--1}",
     },
   ],
 };
@@ -111,17 +107,17 @@ const permutationsForBodyDecorations = {
   $value: [
     {
       $name: "None",
-      $type: "decoration",
+      $type: "textDecoration",
       $value: "none",
     },
     {
       $name: "Underline",
-      $type: "decoration",
+      $type: "textDecoration",
       $value: "underline",
     },
     {
       $name: "Strikethrough",
-      $type: "decoration",
+      $type: "textDecoration",
       $value: "line-through",
     },
   ],
@@ -131,18 +127,20 @@ const permutationsForBodyDecorations = {
 export const data: TokensProps = {
   typographyScale: {
     $type: "scale",
-    $value: {
-      min: {
-        width: "320px",
-        base: "16px",
-        ratio: 1.067,
+    $value: [
+      {
+        $name: "BP1",
+        width: 320,
+        fontSize: 16,
+        typeScale: 1.067,
       },
-      max: {
-        width: "1728px",
-        base: "21px",
-        ratio: 1.414,
+      {
+        $name: "BP4",
+        width: 1728,
+        fontSize: 21,
+        typeScale: 1.414,
       },
-    },
+    ],
   },
   font: {
     family: {
@@ -197,7 +195,7 @@ export const data: TokensProps = {
         fontStyle: "normal",
         letterSpacing: "0px",
         lineHeight: "{font.lineHeight.heading}",
-        fontSize: "{scales.typography-step-4}",
+        fontSize: "{scales.step-4}",
       },
     },
     Paragraph: {
@@ -208,7 +206,7 @@ export const data: TokensProps = {
         fontStyle: "normal",
         letterSpacing: "0px",
         lineHeight: "{font.lineHeight.body}",
-        fontSize: "{scales.typography-step-0}",
+        fontSize: "{scales.step-0}",
       },
       $permutations: [
         permutationsForBodyFontSize,

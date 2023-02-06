@@ -2,7 +2,10 @@
   "compilerOptions": {
     "target": "es6",
     "lib": ["es6"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
     "strict": true,
-    "typeRoots": ["../node_modules/@figma"]
+    "typeRoots": ["../../../node_modules/@figma"]
   }
 }
